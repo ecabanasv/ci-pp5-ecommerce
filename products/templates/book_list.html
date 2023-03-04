@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block content %}
+<h1 class="text-center my-5">Books List</h1>
+<div class="d-flex justify-content-end mb-3">
+  <a
+  href="{% url 'products:book_list' %}?sort=title"
+  class="btn btn-outline-secondary mr-3 {% if sort == 'title' %}active{% endif %}"
+  >Sort by title</a
+>
+<a
+  href="{% url 'products:book_list' %}?sort=price"
+  class="btn btn-outline-secondary mr-3 {% if sort == 'price' %}active{% endif %}"
+  >Sort by price</a
+>
+<a
+  href="{% url 'products:book_list' %}?sort=rating"
+  class="btn btn-outline-secondary {% if sort == 'rating' %}active{% endif %}"
+  >Sort by rating</a
+>
+</div>
+<div class="book-list">
+  {% for book in books %}
+  <div class="card mb-3 mr-3 book-card">
+    <a href="{% url 'products:book_detail' book.id %}">
+      <img src="{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static 'img/default_book_cover.jpg' %}{% endif %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ book.title }}</h5>
+        <p class="card-text">{{ book.author }}</p>
+        <p class="card-text">Price: {{ book.price }} EUR</p>
+        <p class="card-text">Rating: {{ book.rating }}</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if books.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ books.previous_page_number }}&sort={{ sort }}&search={{ search }}">Previous</a>
+        </li>
+      {% endif %}
+      {% for page in books.paginator.page_range %}
+        <li class="page-item {% if books.number == page %}active{% endif %}">
+          <a class="page-link" href="?page={{ page }}&sort={{ sort }}&search={{ search }}">{{ page }}</a>
+        </li>
+      {% endfor %}
+      {% if books.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ books.next_page_number }}&sort={{ sort }}&search={{ search }}">Next</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+{% endblock %}
