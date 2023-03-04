@@ -1,0 +1,74 @@
+[
+  {
+    "model": "products.author",
+    "pk": 1,
+    "fields": {
+      "name": "Jane Austen",
+      "description": "A renowned British novelist who wrote several classic novels such as Pride and Prejudice and Sense and Sensibility"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 2,
+    "fields": {
+      "name": "Mark Twain",
+      "description": "An American writer who is best known for his works such as The Adventures of Tom Sawyer and The Adventures of Huckleberry Finn"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 3,
+    "fields": {
+      "name": "J.K. Rowling",
+      "description": "A British author who is best known for writing the Harry Potter series of seven fantasy novels"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 4,
+    "fields": {
+      "name": "J.D. Salinger",
+      "description": "An American writer who is best known for his novel The Catcher in the Rye"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 5,
+    "fields": {
+      "name": "Gabriel García Márquez",
+      "description": "A Colombian author who was a pioneer of the magical realism literary genre and is best known for his novel One Hundred Years of Solitude"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 6,
+    "fields": {
+      "name": "J.R.R. Tolkien",
+      "description": "An English writer who is best known for his works such as The Hobbit and The Lord of the Rings trilogy"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 7,
+    "fields": {
+      "name": "Anne Frank",
+      "description": "A German-born Jewish girl who is best known for her diary, which documents her experiences hiding from the Nazis during the Holocaust"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 8,
+    "fields": {
+      "name": "Herman Melville",
+      "description": "An American writer who is best known for his novel Moby-Dick"
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 9,
+    "fields": {
+      "name": "Leo Tolstoy",
+      "description": "A Russian writer who is best known for his novels War and Peace and Anna Karenina"
+    }
+  }
+]

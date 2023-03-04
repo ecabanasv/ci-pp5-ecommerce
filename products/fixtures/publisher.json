@@ -1,0 +1,26 @@
+[
+  {
+    "model": "products.publisher",
+    "pk": 1,
+    "fields": {
+      "name": "Penguin Random House",
+      "description": "One of the world's largest English-language trade book publishers."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 2,
+    "fields": {
+      "name": "Simon & Schuster",
+      "description": "A major American publisher best known for publishing popular books, magazines and digital content."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 3,
+    "fields": {
+      "name": "HarperCollins",
+      "description": "One of the world's largest publishing companies, with a diverse range of books, including fiction, non-fiction, and children's products."
+    }
+  }
+]

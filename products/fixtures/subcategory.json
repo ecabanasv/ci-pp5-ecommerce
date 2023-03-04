@@ -1,0 +1,82 @@
+[
+  {
+    "model": "products.subcategory",
+    "pk": 1,
+    "fields": {
+      "name": "sci-fi",
+      "friendly_name": "Sci-Fi",
+      "description": "Books that belong to the science fiction sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 2,
+    "fields": {
+      "name": "fantasy",
+      "friendly_name": "Fantasy",
+      "description": "Books that belong to the fantasy sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 3,
+    "fields": {
+      "name": "mystery",
+      "friendly_name": "Mystery",
+      "description": "Books that belong to the mystery sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 4,
+    "fields": {
+      "name": "self-help",
+      "friendly_name": "Self-Help",
+      "description": "Books that belong to the self-help sub-genre",
+      "category": 2
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 5,
+    "fields": {
+      "name": "biography",
+      "friendly_name": "Biography",
+      "description": "Books that belong to the biography sub-genre",
+      "category": 2
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 6,
+    "fields": {
+      "name": "history",
+      "friendly_name": "History",
+      "description": "Books that belong to the history sub-genre",
+      "category": 2
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 7,
+    "fields": {
+      "name": "romantic-comedy",
+      "friendly_name": "Romantic Comedy",
+      "description": "Books that belong to the romantic comedy sub-genre",
+      "category": 3
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 8,
+    "fields": {
+      "name": "romantic-drama",
+      "friendly_name": "Romantic Drama",
+      "description": "Books that belong to the romantic drama sub-genre",
+      "category": 3
+    }
+  }
+]

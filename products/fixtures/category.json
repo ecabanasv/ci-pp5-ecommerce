@@ -1,0 +1,29 @@
+[
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "name": "fiction",
+      "friendly_name": "Fiction",
+      "description": "Books that belong to the fiction genre"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+      "name": "non-fiction",
+      "friendly_name": "Non-Fiction",
+      "description": "Books that belong to the non-fiction genre"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+      "name": "romance",
+      "friendly_name": "Romance",
+      "description": "Books that belong to the romance genre"
+    }
+  }
+]
