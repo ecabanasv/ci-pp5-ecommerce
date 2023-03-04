@@ -1,0 +1,21 @@
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav w-auto pl-1">
+        <li class="nav-item d-block d-lg-none">
+            <a class="font-weight-bold nav-link mr-3" href="{% url 'home' %}" id="home-link">
+                Home
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="font-weight-bold nav-link mr-3" href="{% url 'products:book_list' %}" id="books-link" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Books
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="books-link">
+                <a href="{% url 'products:book_list' %}" class="dropdown-item">All</a>
+                <a href="{% url 'products:book_list' %}?category=fiction" class="dropdown-item">Fiction</a>
+                <a href="{% url 'products:book_list' %}?category=non-fiction" class="dropdown-item">Non Fiction</a>
+                <a href="{% url 'products:book_list' %}?category=romance" class="dropdown-item">Romance</a>                
+            </div>
+        </li>
+    </ul>
+</div>
