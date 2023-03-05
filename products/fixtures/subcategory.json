@@ -33,50 +33,62 @@
     "model": "products.subcategory",
     "pk": 4,
     "fields": {
-      "name": "self-help",
-      "friendly_name": "Self-Help",
-      "description": "Books that belong to the self-help sub-genre",
-      "category": 2
+      "name": "literary-fiction",
+      "friendly_name": "Literary Fiction",
+      "description": "Books that belong to the Literary Fiction sub-genre",
+      "category": 1
     }
   },
   {
     "model": "products.subcategory",
     "pk": 5,
     "fields": {
-      "name": "biography",
-      "friendly_name": "Biography",
-      "description": "Books that belong to the biography sub-genre",
-      "category": 2
+      "name": "realistic-fiction",
+      "friendly_name": "Realistic Fiction",
+      "description": "Books that belong to the Realistic Fiction sub-genre",
+      "category": 1
     }
   },
   {
     "model": "products.subcategory",
     "pk": 6,
     "fields": {
-      "name": "history",
-      "friendly_name": "History",
-      "description": "Books that belong to the history sub-genre",
-      "category": 2
+      "name": "historical-fiction",
+      "friendly_name": "Historical Fiction",
+      "description": "Books that belong to the Historical Fiction sub-genre",
+      "category": 1
     }
   },
   {
     "model": "products.subcategory",
     "pk": 7,
     "fields": {
-      "name": "romantic-comedy",
-      "friendly_name": "Romantic Comedy",
-      "description": "Books that belong to the romantic comedy sub-genre",
-      "category": 3
+      "name": "magical-realism",
+      "friendly_name": "Magical Realism",
+      "description": "Books that belong to the Magical Realism sub-genre",
+      "category": 1
     }
   },
   {
     "model": "products.subcategory",
     "pk": 8,
     "fields": {
-      "name": "romantic-drama",
-      "friendly_name": "Romantic Drama",
-      "description": "Books that belong to the romantic drama sub-genre",
-      "category": 3
+      "name": "adventure",
+      "friendly_name": "Adventure",
+      "description": "Books that belong to the Adventure sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 9,
+    "fields": {
+      "name": "biography",
+      "friendly_name": "Biography",
+      "description": "Books that belong to the biography sub-genre",
+      "category": 2
     }
   }
+
+
 ]
