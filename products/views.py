@@ -5,6 +5,10 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Book
 
+
+# The BookDetailView displays the details of a specific book
+
+
 class BookListView(ListView):
     # Specify the model to use
     model = Book
@@ -21,13 +25,21 @@ class BookListView(ListView):
         queryset = super().get_queryset()
         # Get the sort order from the GET request
         sort_order = self.request.GET.get('sort', 'title')
-        # Order the queryset based on the sort order
+        sort_direction = self.request.GET.get('direction', 'asc')
+
+        # Order the queryset based on the sort order and direction
         if sort_order == 'title':
             queryset = queryset.order_by('title')
+            if sort_direction == 'desc':
+                queryset = queryset.reverse()
         elif sort_order == 'price':
             queryset = queryset.order_by('price')
+            if sort_direction == 'desc':
+                queryset = queryset.reverse()
         elif sort_order == 'rating':
             queryset = queryset.order_by('rating')
+            if sort_direction == 'desc':
+                queryset = queryset.reverse()
         # Get the category from the GET request
         category = self.request.GET.get('category')
         # Filter the queryset based on the category
@@ -38,9 +50,9 @@ class BookListView(ListView):
         # Filter the queryset based on the search term
         if search_term:
             queryset = queryset.filter(
-            Q(isbn__icontains=search_term) |
-            Q(title__icontains=search_term) |
-            Q(author__name__icontains=search_term)
+                Q(isbn__icontains=search_term) |
+                Q(title__icontains=search_term) |
+                Q(author__name__icontains=search_term)
             )
         # Return the filtered and ordered queryset
         return queryset
@@ -49,6 +61,7 @@ class BookListView(ListView):
         context = super().get_context_data(**kwargs)
         # Add the sort order, search term, and category filter to the context
         context['sort'] = self.request.GET.get('sort', 'title')
+        context['direction'] = self.request.GET.get('direction', 'asc')
         context['search'] = self.request.GET.get('search', '')
         context['category'] = self.request.GET.get('category', '')
         # Paginate the books
@@ -57,7 +70,6 @@ class BookListView(ListView):
         books = paginator.get_page(page)
         context['books'] = books
         return context
-
 
 
 # The BookDetailView displays the details of a specific book
