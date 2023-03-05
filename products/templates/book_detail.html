@@ -29,9 +29,9 @@
       <!-- Use the dl tag to create a definition list for the book details -->
       <dl class="row">
         <dt class="col-sm-3">Category</dt>
-        <dd class="col-sm-9">{{ book.category }}</dd>
+        <dd class="col-sm-9">{{ book.category|title }}</dd>
         <dt class="col-sm-3">Subcategory</dt>
-        <dd class="col-sm-9">{{ book.subcategory }}</dd>
+        <dd class="col-sm-9">{{ book.subcategory|title }}</dd>
         <dt class="col-sm-3">Author</dt>
         <dd class="col-sm-9">{{ book.author }}</dd>
         <dt class="col-sm-3">Publisher</dt>
@@ -43,11 +43,11 @@
         <dt class="col-sm-3">Language</dt>
         <dd class="col-sm-9">{{ book.language }}</dd>
         <dt class="col-sm-3">Price</dt>
-        <dd class="col-sm-9">${{ book.price }}</dd>
+        <dd class="col-sm-9">{{ book.price }} EUR</dd>
         <dt class="col-sm-3">Stock</dt>
-        <dd class="col-sm-9">{{ book.stock }}</dd>
+        <dd class="col-sm-9">{{ book.stock }} units</dd>
         <dt class="col-sm-3">Rating</dt>
-        <dd class="col-sm-9">{{ book.rating }}</dd>
+        <dd class="col-sm-9">{{ book.rating }} stars</dd>
       </dl>
     </div>
   </div>
