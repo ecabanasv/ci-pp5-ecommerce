@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.paginator import Paginator
@@ -5,8 +6,32 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Book
 
+# The search_books function displays a list of books based on the search term
 
-# The BookDetailView displays the details of a specific book
+def search_books(request):
+    queryset = Book.objects.all()
+    # Get the search term from the GET request
+    search_term = request.GET.get('search', '')
+    # Filter the queryset based on the search term
+    if search_term:
+        queryset = queryset.filter(
+            Q(isbn__icontains=search_term) |
+            Q(title__icontains=search_term) |
+            Q(author__name__icontains=search_term)
+        )
+    # Paginate the queryset
+    paginator = Paginator(queryset, 6)
+    page = request.GET.get('page')
+    books = paginator.get_page(page)
+    # Return the search results as a JSON response
+    if request.is_ajax():
+        books_data = [{'pk': book.pk, 'title': book.title, 'author': book.author.name, 'isbn': book.isbn, 'cover_image': book.cover_image.url} for book in books]
+        return JsonResponse({'books': books_data})
+    else:
+        return render(request, 'book_list.html', {'books': books})
+
+
+# The BookListView displays a list of books
 
 
 class BookListView(ListView):

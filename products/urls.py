@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView
+from .views import BookListView, BookDetailView, BookCreateView, BookUpdateView, BookDeleteView, search_books
 
 app_name = 'products'
 
@@ -14,4 +14,6 @@ urlpatterns = [
     path('<int:pk>/update/', BookUpdateView.as_view(), name='book_update'),
     # Delete an existing book
     path('<int:pk>/delete/', BookDeleteView.as_view(), name='book_delete'),
+    # Search for books
+    path('search/', search_books, name='book_search'),
 ]
