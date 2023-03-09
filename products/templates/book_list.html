@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block content %}
-<h1 class="text-center my-5">
+<h1 class="text-left my-3">
   {% if search_term %}
     {% if books.paginator.count == 0 %}
       No books found for "{{ search_term }}"
@@ -22,7 +22,7 @@
 </h1>
 {% if books.paginator.count > 1 %}
 <!-- Sort buttons -->
-<div class="d-flex justify-content-center mb-3">
+<div class="book-sorting-buttons">
   <a
   href="{% url 'products:book_list' %}?sort=title&direction={% if sort == 'title' and direction == 'desc' %}asc{% else %}desc{% endif %}&category={{ category }}"
   class="btn btn-outline-secondary btn-sm mr-3 {% if sort == 'title' %}active{% endif %}"
