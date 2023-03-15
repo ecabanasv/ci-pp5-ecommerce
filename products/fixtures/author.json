@@ -70,5 +70,61 @@
       "name": "Leo Tolstoy",
       "description": "A Russian writer who is best known for his novels War and Peace and Anna Karenina"
     }
+  },
+  {
+    "model": "products.author",
+    "pk": 10,
+    "fields": {
+      "name": "Ken Follet",
+      "description": "A Welsh author best known for his historical fiction novels such as The Pillars of the Earth and World Without End."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 11,
+    "fields": {
+      "name": "Jean M. Auel",
+      "description": "An American author best known for her Earth's Children series, which includes the novels The Clan of the Cave Bear and The Shelters of Stone."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 12,
+    "fields": {
+      "name": "Leila Meacham",
+      "description": "An American author best known for her historical fiction novels such as Roses and Tumbleweeds."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 13,
+    "fields": {
+      "name": "Maria Dueñas",
+      "description": "A Spanish author best known for her novel The Time in Between, which is set during the Spanish Civil War and the Second World War."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 14,
+    "fields": {
+      "name": "Victoria Holt",
+      "description": "A pseudonym used by the English author Eleanor Alice Burford Hibbert, who was best known for her gothic romance novels."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 15,
+    "fields": {
+      "name": "Frederick Forsyth",
+      "description": "An English author and journalist best known for his thrillers, including The Day of the Jackal and The Odessa File."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 16,
+    "fields": {
+      "name": "Kenizé Mourad",
+      "description": "A French author best known for her historical fiction novels such as The Last portrait and L’Amant Persan."
+    }
   }
 ]
