@@ -28,7 +28,7 @@ def search_books(request):
         books_data = [{'pk': book.pk, 'title': book.title, 'author': book.author.name, 'isbn': book.isbn, 'cover_image': book.cover_image.url} for book in books]
         return JsonResponse({'books': books_data})
     else:
-        return render(request, 'book_list.html', {'books': books})
+        return render(request, 'products/book_list.html', {'books': books})
 
 
 # The BookListView displays a list of books
@@ -38,7 +38,7 @@ class BookListView(ListView):
     # Specify the model to use
     model = Book
     # Specify the template name to use
-    template_name = 'book_list.html'
+    template_name = 'products/book_list.html'
     # Specify the name of the object to be passed to the template
     context_object_name = 'books'
     # Specify the default sorting order for the books
@@ -104,7 +104,7 @@ class BookDetailView(DetailView):
     # Specify the model to use
     model = Book
     # Specify the template name to use
-    template_name = 'book_detail.html'
+    template_name = 'products/book_detail.html'
 
 # The BookCreateView allows the user to create a new book
 
@@ -113,7 +113,7 @@ class BookCreateView(CreateView):
     # Specify the model to use
     model = Book
     # Specify the template name to use
-    template_name = 'templates/book_form.html'
+    template_name = 'products/book_form.html'
     # Specify the fields to be included in the form
     fields = ['isbn', 'title', 'small_description', 'description', 'author', 'price',
               'rating', 'stock', 'cover', 'category', 'subcategory', 'publication_date', 'publisher', 'pages', 'language']
@@ -130,7 +130,7 @@ class BookUpdateView(UpdateView):
     # Specify the model to use
     model = Book
     # Specify the template name to use
-    template_name = 'templates/book_form.html'
+    template_name = 'products/book_form.html'
     # Specify the fields to be included in the form
     fields = ['isbn', 'title', 'small_description', 'description', 'author', 'price',
               'rating', 'stock', 'cover', 'category', 'subcategory', 'publication_date', 'publisher', 'pages', 'language']
@@ -142,6 +142,6 @@ class BookDeleteView(DeleteView):
     # Specify the model to use
     model = Book
     # Specify the template name to use
-    template_name = 'templates/book_confirm_delete.html'
+    template_name = 'products/book_confirm_delete.html'
     # Specify the URL to redirect to after a successful deletion
     success_url = '/books/'
