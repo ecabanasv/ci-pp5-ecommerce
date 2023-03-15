@@ -23,9 +23,9 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('products/', include('products.urls')),
+    path('cart/', include('cart.urls')),
     # path('blog/', include('blog.urls')),
     # path('contact/', views.ContactView.as_view(), name='contact'),
-    # path('cart/', include('cart.urls')),
     # path('checkout/', include('checkout.urls')),
     # path('profile/', include('profiles.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
