@@ -12,8 +12,12 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     color: #333;
-    background: #fff;
 }
+
+.home-background {
+    background-color: #fdfdfd;
+}
+
 
 h1 {
     font-size: 2rem;
@@ -47,6 +51,7 @@ a:visited {
 /* search bar */
 
 .book-ajax-list {
+    padding: 0;
     list-style-type: none;
     position: absolute;
     top: 70px;
@@ -57,8 +62,8 @@ a:visited {
   .book-ajax-list-details {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid gray;
+    padding: 5px;
+    border-bottom: 1px dashed rgb(196, 196, 196);
   }
   
   .book-cover-image {
@@ -71,8 +76,6 @@ a:visited {
     margin: 0;
     font-size: 16px;
   }
-  
-
 
 /* Main Nav Styles */
 
@@ -105,6 +108,10 @@ a:visited {
     text-decoration: none;
 }
 
+.dropdown {
+    width: auto;
+}
+
 .dropdown-menu {
     background-color: #fff;
     min-width: 8rem;
@@ -127,12 +134,76 @@ a:visited {
     color: #333;
 }
 
+/* Messages */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent; 
+    border-bottom: 10px solid black;
+    position: absolute;
+    top: -10px;
+    right: 36px;
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 
 /* Style for the book cards */
 
 
 .card {
-    height: 100%;
+    height: auto;
 }
 
 .card-img {
@@ -199,23 +270,6 @@ a:visited {
     border-color: #6c757d;
 }
 
-/* Style for the book list */
-
-
-.book-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.book-card {
-    width: 30%;
-    min-width: 300px;
-    margin-right: 2%;
-    display: inline-block;
-}
-
-
 /* Style for the pagination */
 
 
@@ -246,4 +300,10 @@ a:visited {
 .accordion-button:not(.collapsed) {
     color: #333;
     background-color: #f2f2f2;
+}
+
+/* Style for the cart */
+
+.btt-link, .update-link, .remove-link {
+    cursor: pointer;
 }
