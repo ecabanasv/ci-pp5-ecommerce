@@ -1,0 +1,94 @@
+<script>
+    // Disable +/- buttons outside 1-99 range
+    function handleEnableDisable(itemId) {
+        var currentValue = parseInt($(`.id_qty_${itemId}`).val());
+        var minusDisabled = currentValue < 2;
+        var plusDisabled = currentValue > 98;
+        $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`.increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+
+    // Ensure proper enabling/disabling of all inputs on page load
+    var allQtyInputs = $('.qty_input');
+    for (var i = 0; i < allQtyInputs.length; i++) {
+        var itemId = $(allQtyInputs[i]).data('item_id');
+        handleEnableDisable(itemId);
+    }
+
+    // Check enable/disable every time the input is changed
+    $('.qty_input').change(function () {
+        var itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+
+    // Attach an event listener to the 'input' event of all '.qty_input' elements
+    $('.qty_input').on('input', function () {
+        // Get the maximum stock value from the 'max' attribute of the input element
+        var maxStock = parseInt($(this).attr('max'));
+        // Get the current input value as an integer
+        var currentInput = parseInt($(this).val());
+        // Get the corresponding error message element by traversing the DOM
+        var errorMessage = $(this).parent().parent().siblings('.stock-error');
+        // Get the item ID from the 'data-item_id' attribute of the input element
+        var itemId = $(this).data('item_id');
+
+        // Check if the current input value exceeds the maximum stock
+        if (currentInput > maxStock) {
+            // Show the error message
+            errorMessage.show();
+            // Set the input value to the maximum stock value
+            $(this).val(maxStock);
+        } else {
+            // Hide the error message
+            errorMessage.hide();
+        }
+
+        // Update the state of the +/- buttons based on the new input value
+        handleEnableDisable(itemId);
+    });
+
+    // Attach a click event listener to all '.increment-qty' elements
+    $('.increment-qty').click(function (e) {
+        // Prevent the default click behavior (e.g., form submission)
+        e.preventDefault();
+
+        // Get the item ID from the 'data-item_id' attribute of the clicked element
+        var itemId = $(this).data('item_id');
+        // Find the closest '.qty_input' element to the clicked element within the '.input-group'
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        // Get all quantity input elements with the same item ID
+        var allQuantityInputs = $(`.input-group-${itemId} input[name='quantity']`);
+        // Get the current input value as an integer
+        var currentValue = parseInt($(closestInput).val());
+        // Get the maximum stock value from the 'max' attribute of the closest input element
+        var maxStock = parseInt($(closestInput).attr('max'));
+        // Get the corresponding error message element by traversing the DOM
+        var errorMessage = $(this).parent().parent().siblings('.stock-error');
+
+        // Check if incrementing the current input value would exceed the maximum stock
+        if (currentValue + 1 <= maxStock) {
+            // Update the value of all quantity inputs with the incremented value
+            $(allQuantityInputs).val(currentValue + 1);
+            // Hide the error message
+            errorMessage.hide();
+        } else {
+            // Show the error message
+            errorMessage.show();
+        }
+
+        // Update the state of the +/- buttons based on the new input value
+        handleEnableDisable(itemId);
+    });
+
+
+    // decrement quantity
+    $('.decrement-qty').click(function (e) {
+        e.preventDefault();
+        var itemId = $(this).data('item_id');
+        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+        var allQuantityInputs = $(`.input-group-${itemId} input[name='quantity']`);
+        var currentValue = parseInt($(closestInput).val());
+        $(allQuantityInputs).val(currentValue - 1);
+        handleEnableDisable(itemId);
+    });
+</script>
