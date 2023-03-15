@@ -54,6 +54,10 @@ INSTALLED_APPS = [
     'checkout',
     # 'blog',
     # 'contact',
+
+    # Other
+    'crispy_forms',
+    "crispy_bootstrap5",
 ]
 
 SITE_ID = 1 # required by allauth
@@ -81,6 +85,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ecabanas_shop.urls'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -98,8 +105,13 @@ TEMPLATES = [
                 'django.template.context_processors.request', # required by allauth template tags
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # required by media files
                 'products.context_processors.book_count_processor', # required by products app
                 'cart.context_processors.cart_contents', # required by cart appq
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags', # required by crispy_forms
+                'crispy_forms.templatetags.crispy_forms_field', # required by crispy_forms
             ],
         },
     },
