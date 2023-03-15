@@ -1,0 +1,5 @@
+{% if item.product.cover_image %}
+<img class="w-25" src="{{ item.product.cover_image.url }}" alt="{{ item.product.title }}">
+{% else %}
+<img class="w-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.title }}">
+{% endif %}

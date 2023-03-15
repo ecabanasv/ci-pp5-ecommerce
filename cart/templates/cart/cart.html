@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart_tools %}
+
+{% block extra_title %}| cart{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center pt-4">Shopping Cart</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+            <div class="d-block d-md-none mx-4 mx-sm-0">
+                <div class="row">
+                    <div class="col">
+                        {% include "cart/cart_total.html" %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% include "cart/checkout_buttons.html" %}
+                        <p class="text-muted my-3">A summary of your cart contents is below</p>
+                    </div>
+                </div>
+                {% for item in cart_items %}
+                <div class="row">
+                    <div class="col-12 col-sm-6 mb-3">
+                        {% include "cart/product_image.html" %}
+                    </div>
+                    <div class="col-12 col-sm-6 mb-3">
+                        {% include "cart/product_info.html" %}
+                    </div>
+                    <div class="col-12 col-sm-6 order-sm-last">
+                        <p class="my-0">Price Each: €{{ item.product.price }}</p>
+                        <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    </div>
+                    <div class="col-12 col-sm-6 edit-delete-btns">
+                        {% include "cart/quantity_form.html" %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="btt-button shadow-sm rounded-0 border-gold">
+                    <div class="btt-link d-flex h-100">
+                        <i class="fas fa-arrow-up text-jet mx-auto my-auto"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive rounded d-none d-md-block">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                        <tr class="bg-light text-center">
+                            <th scope="col">Item</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Price/Unit</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Total</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="p-3 w-25">
+                            {% include "cart/product_image.html" %}
+                        </td>
+                        <td class="py-3">
+                            {% include "cart/product_info.html" %}
+                        </td>
+                        <td class="py-3 text-center">
+                            <p class="my-0">€{{ item.product.price }}</p>
+                        </td>
+                        <td class="py-3 mx-auto">
+                            {% include "cart/quantity_form.html" %}
+                        </td>
+                        <td class="py-3 text-center">
+                            <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        </td>
+                        <td class="py-3 edit-delete-btns">
+                            <span class="update-link btn p-0"><small><i class="fas fa-sync"></i></small></span>
+                            <span class="remove-link btn p-0 float-right" id="remove_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i></small></span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="6" class="pt-5 text-right">
+                            {% include "cart/cart_total.html" %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="text-right">
+                            {% include "cart/checkout_buttons.html" %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% else %}
+            <p class="lead mx-4 mx-sm-0 mb-4">Your cart is empty.</p>
+            <div class="mx-4 mx-sm-0">
+                <a href="{% url 'products:book_list' %}" class="btn btn-outline-dark border-gold rounded-0 ">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span class="text-uppercase">Keep Shopping</span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+
+<script>
+    // update quantity on click
+    $('.update-link').click(function (e) {
+        var form = $(this).parent().siblings().children('.update-form');
+        form.submit();
+    });
+
+    // update quantity on click mobile
+    $('.mobile-update-link').click(function (e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    });
+
+    // Remove item and reload on click
+    $('.remove-link').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/cart/remove/${itemId}/`;
+        var data = {
+            'csrfmiddlewaretoken': csrfToken
+        };
+
+        console.log('Removing item:', itemId);  // Debugging statement
+
+        $.post(url, data)
+            .done(function () {
+                console.log('Item removed, reloading page');  // Debugging statement
+                location.reload();
+            });
+    });
+
+</script>
+{% endblock %}
