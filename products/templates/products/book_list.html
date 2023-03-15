@@ -1,0 +1,168 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block extra_title %}| products{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid my-5 px-5">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-left">
+        {% if search_term %}
+          {% if books.paginator.count == 0 %}
+            No books found for "{{ search_term }}"
+          {% else %}
+            Search results for "{{ search_term }}" ({{ books.paginator.count }})
+          {% endif %}
+        {% else %}
+          {% if books.paginator.count > 0 %}
+            {% if current_category_name %}
+              {{ current_category_name|title }} ({{ current_category_count }})
+            {% else %}
+              Books ({{ books.paginator.count }})
+            {% endif %}
+          {% else %}
+            No books found
+          {% endif %}
+        {% endif %}
+      </h1>
+    </div>
+    </div>
+    <div class="row mb-2 d-flex justify-content-end">
+      {% if books.paginator.count > 1 %}
+      <!-- Sort dropdown menu -->
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort by 
+          {% if sort == 'title' %}
+            Title 
+            {% if direction == 'asc' %}
+              &nbsp;<i class="fas fa-sort-alpha-up"></i>
+            {% else %}
+              &nbsp;<i class="fas fa-sort-alpha-down"></i>
+            {% endif %}
+          {% elif sort == 'price' %}
+            Price 
+            {% if direction == 'asc' %}
+              &nbsp;<i class="fas fa-sort-amount-up"></i>
+            {% else %}
+              &nbsp;<i class="fas fa-sort-amount-down"></i>
+            {% endif %}
+          {% elif sort == 'rating' %}
+            Rating 
+            {% if direction == 'asc' %}
+              &nbsp;<i class="fas fa-sort-numeric-up"></i>
+            {% else %}
+              &nbsp;<i class="fas fa-sort-numeric-down"></i>
+            {% endif %}
+          {% else %}
+            &nbsp;
+          {% endif %}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a
+          href="{% url 'products:book_list' %}?sort=title&direction={% if sort == 'title' and direction == 'desc' %}asc{% else %}desc{% endif %}&search={{ search }}&category={{ category }}"
+          class="dropdown-item {% if sort == 'title' %}active{% endif %}"
+          >title {% if sort == 'title' %}
+            {% if direction == 'asc' %}
+              <i class="fas fa-sort-alpha-up"></i>
+            {% else %}
+              <i class="fas fa-sort-alpha-down"></i>
+            {% endif %}
+          {% endif %}
+          </a>
+          <a
+          href="{% url 'products:book_list' %}?sort=price&direction={% if sort == 'price' and direction == 'desc' %}asc{% else %}desc{% endif %}&search={{ search }}&category={{ category }}"
+          class="dropdown-item {% if sort == 'price' %}active{% endif %}"
+          >price {% if sort == 'price' %}
+            {% if direction == 'asc' %}
+              <i class="fas fa-sort-amount-up"></i>
+            {% else %}
+              <i class="fas fa-sort-amount-down"></i>
+            {% endif %}
+          {% endif %}
+          </a>
+          <a
+          href="{% url 'products:book_list' %}?sort=rating&direction={% if sort == 'rating' and direction == 'desc' %}asc{% else %}desc{% endif %}&search={{ search }}&category={{ category }}"
+          class="dropdown-item {% if sort == 'rating' %}active{% endif %}"
+          >rating {% if sort == 'rating' %}
+            {% if direction == 'asc' %}
+              <i class="fas fa-sort-numeric-up"></i>
+            {% else %}
+              <i class="fas fa-sort-numeric-down"></i>
+            {% endif %}
+          {% endif %}
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    <div class="row mt-3 d-flex justify-content-center">
+      <!-- Book list -->
+      {% for book in books %}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-3">
+                <a href="{% url 'products:book_detail' book.id %}">
+                  <img src="{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static 'img/default_book_cover.jpg' %}{% endif %}" class="card-img" alt="...">
+                </a>
+              </div>
+              <div class="col-md-9">
+                <div class="card-body">
+                  <h5 class="card-title">{{ book.title }}</h5>
+                  <p class="card-text">{{ book.author }}</p>
+                  <p class="card-text">{{ book.small_description }}</p>
+                  <p class="card-text">Price: {{ book.price }} EUR</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text mb-0">Rating: {{ book.rating }}</p>
+                    <div class="d-grid gap-2 d-flex justify-content-center">
+                      <a href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info"></i></a>
+                      <a href="#"><i class="fa-solid fa-heart"></i></a>
+                      <a href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                  </div>          
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>         
+
+    <div class="row">
+    <!-- Pagination -->
+    {% if books.paginator.num_pages > 1 %}
+    <div class="d-flex justify-content-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          {% if books.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ books.previous_page_number }}&sort={{ sort }}&search={{ search }}&category={{ category }}">Previous</a>
+            </li>
+          {% endif %}
+          {% for page in books.paginator.page_range %}
+            <li class="page-item {% if books.number == page %}active{% endif %}">
+              <a class="page-link" href="?page={{ page }}&sort={{ sort }}&search={{ search }}&category={{ category }}">{{ page }}</a>
+            </li>
+          {% endfor %}
+          {% if books.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ books.next_page_number }}&sort={{ sort }}&search={{ search }}&category={{ category }}">Next</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

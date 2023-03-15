@@ -49,6 +49,17 @@
         <dt class="col-sm-3">Rating</dt>
         <dd class="col-sm-9">{{ book.rating }} stars</dd>
       </dl>
+      <hr />
+      <!-- Use the form tag to create a form for adding the book to the cart -->
+      <form action="{% url 'cart:cart_add' item_id=book.id %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group mb-2">
+          <label for="quantity">Quantity:</label>
+          <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
+        </div>
+        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+        <button type="submit" class="btn btn-secondary">Add to Cart</button>
+      </form>      
     </div>
   </div>
 </div>
