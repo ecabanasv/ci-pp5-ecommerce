@@ -50,21 +50,29 @@ def adjust_cart(request, item_id):
     """ Adjusts the quantity of a specified product to the specified amount """
 
     product = get_object_or_404(Book, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
+    quantity_str = request.POST.get('quantity', '')
+    
+    if quantity_str == '':
+        quantity = 0
+    else:
+        quantity = int(quantity_str)
+
     cart = request.session.get('cart', {})
 
     if quantity > 0:
-        cart[item_id] = quantity
+        cart[str(item_id)] = quantity
         messages.success(
-            request, f'Successfully updated the quantity of {product.title} to {cart[item_id]}')
+            request, f'Successfully updated the quantity of {product.title} to {cart[str(item_id)]}')
     else:
-        cart.pop(item_id)
+        cart.pop(str(item_id))
         messages.success(
             request, f'Successfully removed {product.title} from your cart')
 
     request.session['cart'] = cart
     request.session.save()  # Save the session explicitly
     return redirect(reverse('cart:view_cart'))
+
+
 
 
 def remove_from_cart(request, item_id):
