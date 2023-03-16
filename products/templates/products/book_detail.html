@@ -55,7 +55,7 @@
         {% csrf_token %}
         <div class="form-group mb-2">
           <label for="quantity">Quantity:</label>
-          <input type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
+          <input class="qty_input" type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
         </div>
         <input type="hidden" name="redirect_url" value="{{ request.path }}">
         <button type="submit" class="btn btn-secondary">Add to Cart</button>
@@ -63,4 +63,10 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+
 {% endblock %}
