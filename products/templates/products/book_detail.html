@@ -6,19 +6,19 @@
   <!-- Use the row class to create a row of columns -->
   <div class="row">
     <!-- Use the col-md-5 class to create a 5 column wide column for the book cover image -->
-    <div class="col-md-5">
+    <div class="col-12 col-md-5">
       <!-- Use the text-center class to center the image vertically and horizontally -->
       <div class="text-center">
         <!-- Display the book cover image -->
         <img
           src="{{ book.cover_image.url }}"
-          class="img-fluid"
+          class="w-75"
           alt="Book Cover"
         />
       </div>
     </div>
     <!-- Use the col-md-7 class to create a 7 column wide column for the book details -->
-    <div class="col-md-7">
+    <div class="col-12 col-md-7">
       <!-- Use the h1 tag to display the book title -->
       <h1>{{ book.title }}</h1>
       <!-- Use the h5 tag to display the book ISBN number -->
