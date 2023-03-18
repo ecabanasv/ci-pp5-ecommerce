@@ -45,7 +45,13 @@
         <dt class="col-sm-3">Price</dt>
         <dd class="col-sm-9">{{ book.price }} EUR</dd>
         <dt class="col-sm-3">Stock</dt>
-        <dd class="col-sm-9">{{ book.stock }} units</dd>
+        <dd class="col-sm-9">
+          {% if book.stock == 0 %}
+            Not stock available
+          {% else %}
+            {{ book.stock }} units
+          {% endif %}
+        </dd>
         <dt class="col-sm-3">Rating</dt>
         <dd class="col-sm-9">{{ book.rating }} stars</dd>
       </dl>
@@ -53,12 +59,13 @@
       <!-- Use the form tag to create a form for adding the book to the cart -->
       <form action="{% url 'cart:cart_add' item_id=book.id %}" method="POST">
         {% csrf_token %}
+        {% if book.stock > 0 %}
         <div class="form-group mb-2">
           <label for="quantity">Quantity:</label>
           <input class="qty_input" type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
         </div>
-        <input type="hidden" name="redirect_url" value="{{ request.path }}">
         <button type="submit" class="btn btn-secondary">Add to Cart</button>
+        {% endif %}
       </form>      
     </div>
   </div>
