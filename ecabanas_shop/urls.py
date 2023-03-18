@@ -25,6 +25,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
+    path('profile/', include('profiles.urls')),
     # path('blog/', include('blog.urls')),
     # path('contact/', views.ContactView.as_view(), name='contact'),
     # path('profile/', include('profiles.urls')),
