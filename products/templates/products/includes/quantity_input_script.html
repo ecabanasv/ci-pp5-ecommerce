@@ -47,6 +47,16 @@
         handleEnableDisable(itemId);
     });
 
+    // Additional code to restrict input to numbers only
+    document.querySelectorAll(".qty_input").forEach(input => {
+        input.addEventListener("keydown", function (e) {
+            // Allow only digits (0-9), backspace, delete, arrow keys, and tab
+            if (!((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode == 8 || e.keyCode == 46 || (e.keyCode >= 37 && e.keyCode <= 40) || e.keyCode == 9)) {
+                e.preventDefault();
+            }
+        });
+    });
+
     // Attach a click event listener to all '.increment-qty' elements
     $('.increment-qty').click(function (e) {
         // Prevent the default click behavior (e.g., form submission)
