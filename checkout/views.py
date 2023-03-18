@@ -155,6 +155,13 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+        # Reduce book stock amount
+        order_line_items = OrderLineItem.objects.filter(order=order)
+        for item in order_line_items:
+            product = item.product
+            product.stock -= item.quantity
+            product.save()
+
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
