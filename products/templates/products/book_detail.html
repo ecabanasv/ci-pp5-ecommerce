@@ -1,8 +1,8 @@
-{% extends 'base.html' %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <!-- Use the container class to center the content on the page -->
-<div class="container mt-5">
+<div class="container mt-5 my-5">
   <!-- Use the row class to create a row of columns -->
   <div class="row">
     <!-- Use the col-md-5 class to create a 5 column wide column for the book cover image -->
@@ -10,15 +10,11 @@
       <!-- Use the text-center class to center the image vertically and horizontally -->
       <div class="text-center">
         <!-- Display the book cover image -->
-        <img
-          src="{{ book.cover_image.url }}"
-          class="w-75"
-          alt="Book Cover"
-        />
+        <img src="{{ book.cover_image.url }}" class="img-fluid" alt="Book Cover" />
       </div>
     </div>
     <!-- Use the col-md-7 class to create a 7 column wide column for the book details -->
-    <div class="col-12 col-md-7">
+    <div class="col-12 col-md-7 book-details">
       <!-- Use the h1 tag to display the book title -->
       <h1>{{ book.title }}</h1>
       <!-- Use the h5 tag to display the book ISBN number -->
@@ -27,33 +23,33 @@
       <p>{{ book.description|safe }}</p>
       <hr />
       <!-- Use the dl tag to create a definition list for the book details -->
-      <dl class="row">
-        <dt class="col-sm-3">Category</dt>
-        <dd class="col-sm-9">{{ book.category|title }}</dd>
-        <dt class="col-sm-3">Subcategory</dt>
-        <dd class="col-sm-9">{{ book.subcategory|title }}</dd>
-        <dt class="col-sm-3">Author</dt>
-        <dd class="col-sm-9">{{ book.author }}</dd>
-        <dt class="col-sm-3">Publisher</dt>
-        <dd class="col-sm-9">{{ book.publisher }}</dd>
-        <dt class="col-sm-3">Publication Date</dt>
-        <dd class="col-sm-9">{{ book.publication_date }}</dd>
-        <dt class="col-sm-3">Pages</dt>
-        <dd class="col-sm-9">{{ book.pages }}</dd>
-        <dt class="col-sm-3">Language</dt>
-        <dd class="col-sm-9">{{ book.language }}</dd>
-        <dt class="col-sm-3">Price</dt>
-        <dd class="col-sm-9">{{ book.price }} EUR</dd>
-        <dt class="col-sm-3">Stock</dt>
-        <dd class="col-sm-9">
+      <dl class="row book-details-list">
+        <dt class="col-sm-3 book-details-label">Category</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.category|title }}</dd>
+        <dt class="col-sm-3 book-details-label">Subcategory</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.subcategory|title }}</dd>
+        <dt class="col-sm-3 book-details-label">Author</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.author }}</dd>
+        <dt class="col-sm-3 book-details-label">Publisher</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.publisher }}</dd>
+        <dt class="col-sm-3 book-details-label">Publication Date</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.publication_date }}</dd>
+        <dt class="col-sm-3 book-details-label">Pages</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.pages }}</dd>
+        <dt class="col-sm-3 book-details-label">Language</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.language }}</dd>
+        <dt class="col-sm-3 book-details-label">Price</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.price }} EUR</dd>
+        <dt class="col-sm-3 book-details-label">Stock</dt>
+        <dd class="col-sm-9 book-details-value">
           {% if book.stock == 0 %}
-            Not stock available
+          Not stock available
           {% else %}
-            {{ book.stock }} units
+          {{ book.stock }} units
           {% endif %}
         </dd>
-        <dt class="col-sm-3">Rating</dt>
-        <dd class="col-sm-9">{{ book.rating }} stars</dd>
+        <dt class="col-sm-3 book-details-label">Rating</dt>
+        <dd class="col-sm-9 book-details-value">{{ book.rating }} stars</dd>
       </dl>
       <hr />
       <!-- Use the form tag to create a form for adding the book to the cart -->
@@ -63,18 +59,16 @@
         <div class="form-group mb-2">
           <label for="quantity">Quantity:</label>
           <input class="qty_input" type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
+          <button type="submit" class="btn btn-secondary">Add to Cart</button>
         </div>
-        <button type="submit" class="btn btn-secondary">Add to Cart</button>
         {% endif %}
-      </form>      
+      </form>
     </div>
   </div>
 </div>
 {% endblock %}
-
 <!-- Path: products\templates\products\includes\quantity_input_script.html -->
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
-
 {% endblock %}
