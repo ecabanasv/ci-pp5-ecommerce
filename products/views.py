@@ -100,7 +100,7 @@ class BookListView(ListView):
         context['search'] = self.request.GET.get('search', '')
         context['category'] = self.request.GET.get('category', '')
         # Add subcategories with books to the context
-        context['subcategories'] = SubCategory.objects.annotate(book_count=Count('books')).filter(book_count__gt=0)
+        context['subcategories'] = SubCategory.objects.annotate(book_count=Count('books')).filter(book_count__gt=0).order_by('name')
         # Add current subcategory name to the context
         subcategory = self.request.GET.get('subcategory', '')
         context['subcategory'] = subcategory
