@@ -25,6 +25,11 @@ $(document).ready(function () {
     $(this).siblings(".dropdown-menu").toggleClass("show");
   });
 
+  // Subcategory dropdown
+  $("#subcategoryDropdown").on("change", function () {
+    window.location.href = this.value;
+  });
+
   // When a click event occurs anywhere on the document
   $(document).click(function (e) {
     // If the click did not occur inside of a .dropdown element
@@ -36,3 +41,4 @@ $(document).ready(function () {
     }
   });
 });
+

@@ -4,9 +4,9 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.db.models import Q
-from django.db.models.functions import Lower
+from django.db.models import Count
 from django.contrib.auth.decorators import login_required
-from .models import Book, FavoriteBook
+from .models import Book, FavoriteBook, SubCategory
 
 # The search_books function displays a list of books based on the search term
 
@@ -81,6 +81,14 @@ class BookListView(ListView):
                 Q(title__icontains=search_term) |
                 Q(author__name__icontains=search_term)
             )
+
+        # Get the subcategory from the GET request
+        subcategory = self.request.GET.get('subcategory')
+
+        # Filter the queryset based on the subcategory
+        if subcategory:
+            queryset = queryset.filter(subcategory_id=subcategory)
+
         # Return the filtered and ordered queryset
         return queryset
 
@@ -91,6 +99,16 @@ class BookListView(ListView):
         context['direction'] = self.request.GET.get('direction', 'asc')
         context['search'] = self.request.GET.get('search', '')
         context['category'] = self.request.GET.get('category', '')
+        # Add subcategories with books to the context
+        context['subcategories'] = SubCategory.objects.annotate(book_count=Count('books')).filter(book_count__gt=0)
+        # Add current subcategory name to the context
+        subcategory = self.request.GET.get('subcategory', '')
+        context['subcategory'] = subcategory
+        if subcategory:
+            current_subcategory = SubCategory.objects.get(pk=subcategory)
+            context['current_subcategory_name'] = current_subcategory.name
+        else:
+            context['current_subcategory_name'] = None
         # Paginate the books
         paginator = Paginator(self.get_queryset(), self.paginate_by)
         page = self.request.GET.get('page')
@@ -103,6 +121,7 @@ class BookListView(ListView):
             context['favorite_books'] = set()
 
         return context
+
 
 
 # The BookDetailView displays the details of a specific book
@@ -158,7 +177,7 @@ class BookDeleteView(DeleteView):
 @login_required
 def add_to_favorites(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    favorite_book, created = FavoriteBook.objects.get_or_create(user=request.user, book=book)
+    created = FavoriteBook.objects.get_or_create(user=request.user, book=book)
 
     if created:
         messages.success(request, f"'{book.title}' has been added to your favorites.", extra_tags='favorites')

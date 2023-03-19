@@ -17,7 +17,9 @@ urlpatterns = [
     # Search for books
     path('search/', search_books, name='book_search'),
     # Add to favourites
-    path('add_to_favorites/<int:book_id>/', add_to_favorites, name='add_to_favorites'),
+    path('add_to_favorites/<int:book_id>/',
+         add_to_favorites, name='add_to_favorites'),
     # Remove from favourites
-    path('remove_from_favorites/<int:book_id>/', remove_from_favorites, name='remove_from_favorites'),
+    path('remove_from_favorites/<int:book_id>/',
+         remove_from_favorites, name='remove_from_favorites'),
 ]

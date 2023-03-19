@@ -17,27 +17,51 @@
 <div class="container-fluid my-5 px-5">
   <div class="row">
     <div class="col-md-12">
+      <!-- Show different h1 text depends of results -->
       <h1 class="text-left">
         {% if search_term %}
-          {% if books.paginator.count == 0 %}
-            No books found for "{{ search_term }}"
-          {% else %}
-            Search results for "{{ search_term }}" ({{ books.paginator.count }})
-          {% endif %}
-        {% else %}
-          {% if books.paginator.count > 0 %}
-            {% if current_category_name %}
-              {{ current_category_name|title }} ({{ current_category_count }})
+            {% if books.paginator.count == 0 %}
+                No books found for "{{ search_term }}"
             {% else %}
-              Books ({{ books.paginator.count }})
+                Search results for "{{ search_term }}" ({{ books.paginator.count }})
             {% endif %}
-          {% else %}
-            No books found
-          {% endif %}
+        {% else %}
+            {% if books.paginator.count > 0 %}
+                {% if current_category_name %}
+                    Books : {{ current_category_name|title }}{% if current_subcategory_name %} - {{ current_subcategory_name|title }}{% endif %} ({{ current_category_count }})
+                {% else %}
+                    Books{% if current_subcategory_name %} : {{ current_subcategory_name|title }}{% endif %} ({{ books.paginator.count }})
+                {% endif %}
+            {% else %}
+                No books found
+            {% endif %}
         {% endif %}
-      </h1>
+    </h1>    
     </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <div class="subcategories">
+          <ul class="subcategories-list d-none d-md-flex">
+            <li><a href="{% url 'products:book_list' %}">All</a></li>
+            {% for subcategory in subcategories %}
+            <li><a href="{% url 'products:book_list' %}?subcategory={{ subcategory.id }}">{{ subcategory.name|title }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <!-- Subcategories Dropdown -->
+        <div class="d-md-none">
+          <select class="form-select" id="subcategoryDropdown" name="subcategory">
+              <option value="#">Select Subcat</option>
+              <option value="{% url 'products:book_list' %}">All</option>
+              {% for subcategory in subcategories %}
+                  <option value="?subcategory={{ subcategory.id }}">{{ subcategory.name|title }}</option>
+              {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>    
+    <hr>
     <div class="row mb-2 d-flex justify-content-end">
       {% if books.paginator.count > 1 %}
       <!-- Sort dropdown menu -->
@@ -107,12 +131,15 @@
       </div>
       {% endif %}
     </div>
+    <!-- Show books -->
     {% with total_books=books|length %}
     <div class="container-fluid">
+      <!-- Show books in rows -->
       {% for book in books %}
       {% if forloop.first %}
       <div class="row mt-3 d-flex justify-content-center">
         {% endif %}
+        <!-- Show books in columns -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-{{ total_books|col_lg_value }} col-xl-{{ total_books|col_value }} col-xxl-{{ total_books|col_value }}">
           <div class="card mb-3">
             <div class="row no-gutters">
@@ -123,6 +150,7 @@
                     class="card-img" alt="...">
                 </a>
               </div>
+              <!-- Show book details -->
               <div class="col-md-9">
                 <div class="card-body">
                   <h5 class="card-title">{{ book.title }} 
