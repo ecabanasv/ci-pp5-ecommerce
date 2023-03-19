@@ -120,9 +120,11 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+# The FavoriteBook model represents a book that a user has favorited
 class FavoriteBook(models.Model):
+    # A foreign key to the User model
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # A foreign key to the Book model
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-
     class Meta:
         unique_together = ('user', 'book')
