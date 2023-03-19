@@ -126,5 +126,21 @@
       "name": "Kenizé Mourad",
       "description": "A French author best known for her historical fiction novels such as The Last portrait and L’Amant Persan."
     }
+  },
+  {
+    "model": "products.author",
+    "pk": 17,
+    "fields": {
+      "name": "F. Scott Fitzgerald",
+      "description": "An American author best known for his novels and short stories, such as The Great Gatsby, Tender Is the Night, and This Side of Paradise. Fitzgerald was a prominent figure of the Jazz Age and is considered one of the greatest American writers of the 20th century."
+    }
+  },
+  {
+    "model": "products.author",
+    "pk": 18,
+    "fields": {
+      "name": "Harper Lee",
+      "description": "An American author best known for her Pulitzer Prize-winning novel To Kill a Mockingbird. Published in 1960, the novel is a classic of modern American literature, dealing with issues of racism and social inequality. Harper Lee's second novel, Go Set a Watchman, was published in 2015."
+    }
   }
 ]
