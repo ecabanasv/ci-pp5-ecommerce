@@ -8,7 +8,7 @@ register = template.Library()
 @register.filter
 def col_value(total_books):
     if total_books == 1:
-        return 12
+        return 6
     elif total_books == 2:
         return 6
     elif total_books == 3:
@@ -23,7 +23,7 @@ def col_value(total_books):
 @register.filter
 def col_lg_value(total_books):
     if total_books == 1:
-        return 12
+        return 6
     elif total_books == 2:
         return 6
     elif total_books == 3:
