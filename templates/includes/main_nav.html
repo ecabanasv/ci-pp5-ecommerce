@@ -1,14 +1,14 @@
 <div class="collapse navbar-collapse border-top border-bottom" id="main-nav">
-    <ul class="navbar-nav w-auto">
+    <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item d-block d-lg-none">
             <a class="font-weight-bold nav-link mr-3" href="{% url 'home' %}" id="home-link">
-                Home
+                <i class="fas fa-home"></i> Home
             </a>
         </li>
         <li class="nav-item dropdown">
             <a class="font-weight-bold nav-link mr-3" href="{% url 'products:book_list' %}" id="books-link"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Books
+                <i class="fas fa-book"></i> Books
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="books-link">
                 <a href="{% url 'products:book_list' %}" class="dropdown-item">All ({{ all_books_count }})</a>
@@ -19,22 +19,22 @@
         </li>
         <!-- About Us -->
         <li class="nav-item mr-3">
-            <a class="nav-link" href="{% url 'about_us' %}">About</a>
+            <a class="nav-link" href="{% url 'about_us' %}"><i class="fas fa-info-circle"></i> About</a>
         </li>
 
         <!-- FAQs -->
         <li class="nav-item mr-3">
-            <a class="nav-link" href="{% url 'faq' %}">FAQs</a>
+            <a class="nav-link" href="{% url 'faq' %}"><i class="fas fa-question-circle"></i> FAQs</a>
         </li>
 
         <!-- Blog -->
         <li class="nav-item mr-3">
-            <a class="nav-link" href="#">Blog</a>
+            <a class="nav-link" href="#"><i class="fas fa-blog"></i> Blog</a>
         </li>
 
         <!-- Contact Us -->
         <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Contact Us</a>
         </li>
     </ul>
 </div>
