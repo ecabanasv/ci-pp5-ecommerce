@@ -136,7 +136,11 @@
                     <p class="card-text mb-0">Rating: {{ book.rating }}</p>
                     <div class="d-grid gap-2 d-flex justify-content-center">
                       <a href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info"></i></a>
-                      <a href="#"><i class="fa-solid fa-heart"></i></a>
+                      {% if book.id in favorite_books %}
+                      <a href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart"></i></a>
+                      {% else %}
+                      <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart"></i></a>
+                      {% endif %}
                       {% if book.stock > 0 %}
                         <a href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
                       {% endif %}

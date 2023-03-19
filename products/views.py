@@ -1,10 +1,12 @@
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.paginator import Paginator
+from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
-from .models import Book
+from django.contrib.auth.decorators import login_required
+from .models import Book, FavoriteBook
 
 # The search_books function displays a list of books based on the search term
 
@@ -94,6 +96,12 @@ class BookListView(ListView):
         page = self.request.GET.get('page')
         books = paginator.get_page(page)
         context['books'] = books
+
+        if self.request.user.is_authenticated:
+            context['favorite_books'] = set(FavoriteBook.objects.filter(user=self.request.user).values_list('book_id', flat=True))
+        else:
+            context['favorite_books'] = set()
+
         return context
 
 
@@ -145,3 +153,25 @@ class BookDeleteView(DeleteView):
     template_name = 'products/book_confirm_delete.html'
     # Specify the URL to redirect to after a successful deletion
     success_url = '/books/'
+
+
+@login_required
+def add_to_favorites(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    favorite_book, created = FavoriteBook.objects.get_or_create(user=request.user, book=book)
+
+    if created:
+        messages.success(request, f"'{book.title}' has been added to your favorites.", extra_tags='favorites')
+    else:
+        messages.warning(request, f"'{book.title}' is already in your favorites.", extra_tags='favorites')
+
+    return redirect('products:book_list')
+
+@login_required
+def remove_from_favorites(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    favorite_book = get_object_or_404(FavoriteBook, user=request.user, book=book)
+    favorite_book.delete()
+
+    messages.success(request, f"'{book.title}' has been removed from your favorites.", extra_tags='favorites')
+    return redirect('products:book_list')
