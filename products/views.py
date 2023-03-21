@@ -224,7 +224,7 @@ class BookDeleteView(DeleteView):
 # add to favorites
 # The user must be logged in to access this view
 
-@method_decorator(login_required)
+@login_required
 def add_to_favorites(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     created = FavoriteBook.objects.get_or_create(user=request.user, book=book)
@@ -243,7 +243,7 @@ def add_to_favorites(request, book_id):
 # remove from favorites
 # The user must be logged in to access this view
 
-@method_decorator(login_required)
+@login_required
 def remove_from_favorites(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     favorite_book = get_object_or_404(
