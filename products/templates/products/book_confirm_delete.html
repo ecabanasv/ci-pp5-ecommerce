@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5 px-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-left">Confirm deletion of book "{{ object.title }}"</h2>
+            <hr class="my-4">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" class="form-horizontal">
+                {% csrf_token %}
+                <div class="form-group">
+                  <p>Are you sure you want to delete "{{ object.title }}"?</p>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <a href="{% url 'products:book_detail' pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        
+{% endblock %}
