@@ -17,6 +17,19 @@
     <div class="col-12 col-md-7 book-details">
       <!-- Use the h1 tag to display the book title -->
       <h1>{{ book.title }}</h1>
+      <!-- If user is authenticated and is staff, display the edit and delete buttons -->
+      
+      <div class="d-grid gap-2 d-flex justify-content-end">
+        {% if book.id in favorite_books %}
+        <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart"></i></a>
+        {% else %}
+        <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart"></i></a>
+        {% endif %}
+        {% if user.is_authenticated and user.is_staff %}
+        <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit"></i></a>
+        <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt"></i></a>
+        {% endif %}
+      </div>
       <!-- Use the h5 tag to display the book ISBN number -->
       <h5>ISBN: {{ book.isbn }}</h5>
       <!-- Use the p tag to display the book description -->

@@ -11,7 +11,7 @@
         <div class="col"></div>
     </div>
 </div>
-{% endblock %}
+{% endblock %}  
 
 {% block content %}
 <div class="container-fluid my-5 px-5">
@@ -36,7 +36,12 @@
                 No books found
             {% endif %}
         {% endif %}
-    </h1>    
+    </h1>
+      <div class="d-grid gap-2 d-flex justify-content-start">
+        {% if user.is_authenticated and user.is_staff %}
+        <a href="{% url 'products:book_create' %}"><i class="fa-solid fa-plus"></i><span class="text-primary"> ADD BOOK</span></a>
+        {% endif %}
+      </div>
     </div>
     </div>
     <div class="row">
@@ -153,24 +158,26 @@
               <!-- Show book details -->
               <div class="col-md-9">
                 <div class="card-body">
-                  <h5 class="card-title">{{ book.title }} 
-                  {% if book.stock == 0 %} 
-                    <span class="text-danger"><small>(No stock)</small></span>
-                  {% endif %}</h5>
+                  <h5 class="card-title">{{ book.title }} {% if book.stock == 0 %} <span class="text-danger"><small>(No
+                        stock)</small></span>{% endif %}</h5>
                   <p class="card-text">{{ book.author }}</p>
                   <p class="card-text">{{ book.small_description }}</p>
                   <p class="card-text">Price: {{ book.price }} EUR</p>
                   <div class="d-flex justify-content-between">
                     <p class="card-text mb-0">Rating: {{ book.rating }}</p>
                     <div class="d-grid gap-2 d-flex justify-content-center">
-                      <a href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info"></i></a>
+                      <a class="text-info" href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info"></i></a>
                       {% if book.id in favorite_books %}
-                      <a href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart"></i></a>
+                      <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart"></i></a>
                       {% else %}
                       <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart"></i></a>
                       {% endif %}
                       {% if book.stock > 0 %}
-                        <a href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                      <a class="text-success" href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                      {% endif %}
+                      {% if user.is_authenticated and user.is_staff %}
+                      <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit"></i></a>
+                      <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt"></i></a>
                       {% endif %}
                     </div>
                   </div>
