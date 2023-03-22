@@ -88,7 +88,55 @@
       "description": "Books that belong to the biography sub-genre",
       "category": 2
     }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 10,
+    "fields": {
+      "name": "thriller",
+      "friendly_name": "Thriller",
+      "description": "Books that belong to the thriller sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 11,
+    "fields": {
+      "name": "prehistoric-fiction",
+      "friendly_name": "Prehistoric Fiction",
+      "description": "Books that belong to the prehistoric fiction sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 12,
+    "fields": {
+      "name": "historical-romance",
+      "friendly_name": "Historical Romance",
+      "description": "Books that belong to the historical romance sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 13,
+    "fields": {
+      "name": "historical-drama",
+      "friendly_name": "Historical Drama",
+      "description": "Books that belong to the historical drama sub-genre",
+      "category": 1
+    }
+  },
+  {
+    "model": "products.subcategory",
+    "pk": 14,
+    "fields": {
+      "name": "contemporary-fiction",
+      "friendly_name": "Contemporary Fiction",
+      "description": "Books that belong to the contemporary fiction sub-genre",
+      "category": 1
+    }
   }
-
-
 ]

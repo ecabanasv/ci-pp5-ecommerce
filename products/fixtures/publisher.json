@@ -22,5 +22,61 @@
       "name": "HarperCollins",
       "description": "One of the world's largest publishing companies, with a diverse range of books, including fiction, non-fiction, and children's products."
     }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 4,
+    "fields": {
+      "name": "Hachette Livre",
+      "description": "A French publisher that is one of the largest publishing groups in the world, with imprints in many countries."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 5,
+    "fields": {
+      "name": "Macmillan Publishers",
+      "description": "A global trade publishing company that publishes books, magazines, textbooks, and more."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 6,
+    "fields": {
+      "name": "Bloomsbury Publishing",
+      "description": "A British independent publisher that has won multiple awards and publishes books in many genres."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 7,
+    "fields": {
+      "name": "Scholastic Corporation",
+      "description": "An American multinational publishing, education and media company known for publishing educational materials for schools, teachers, and parents."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 8,
+    "fields": {
+      "name": "Houghton Mifflin Harcourt",
+      "description": "An American publishing company that publishes textbooks, instructional technology materials, assessments, reference works, and fiction and non-fiction for both adults and young readers."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 9,
+    "fields": {
+      "name": "Alfred A. Knopf",
+      "description": "An American publishing house that was founded in 1915 and is now part of the Knopf Doubleday Publishing Group, which is a division of Random House, itself a subsidiary of Penguin Random House."
+    }
+  },
+  {
+    "model": "products.publisher",
+    "pk": 10,
+    "fields": {
+      "name": "Farrar, Straus and Giroux",
+      "description": "An American publishing company that was founded in 1946 and is now a division of Macmillan Publishers, itself part of the Holtzbrinck Publishing Group."
+    }
   }
 ]
