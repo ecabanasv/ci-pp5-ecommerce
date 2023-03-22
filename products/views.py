@@ -22,6 +22,8 @@ from django.db.models import Q
 from django.db.models import Count
 # The following imports are used to create a formset
 from .models import Book, FavoriteBook, SubCategory
+# The following imports are used to create a formset
+from .forms import BookForm, BookUpdateForm
 
 # The search_books function displays a list of books based on the search term
 
@@ -164,43 +166,58 @@ class BookDetailView(DetailView):
 # The BookCreateView allows the user to create a new book
 # The user must be logged in and a staff member to access this view
 
-@method_decorator(login_required, name='dispatch')
 class BookCreateView(CreateView):
     # Specify the model to use
     model = Book
+    # Specify the form to use
+    form_class = BookForm
     # Specify the template name to use
     template_name = 'products/book_form.html'
-    # Specify the fields to be included in the form
-    fields = ['isbn', 'title', 'small_description', 'description', 'author', 'price',
-              'rating', 'stock', 'cover_image', 'category', 'subcategory', 'publication_date', 'publisher', 'pages', 'language']
+    # Specify the URL to redirect to after a successful submission
+    success_url = reverse_lazy('products:book_list')
 
-    # Override the form_valid method to set the author field to the currently logged in user
+    # The dispatch method is used to check if the user is logged in and a staff member
+    @method_decorator(staff_member_required(login_url=reverse_lazy('products:book_list')))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
-    # staff_member_required is a decorator that checks if the user is a staff member
-    @method_decorator(staff_member_required(login_url=reverse_lazy('home')))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = 'Create'
+        return context
 
-# The BookUpdateView allows the user to update the details of a specific book
+
+# The BookUpdateView allows the user to update a specific book
 # The user must be logged in and a staff member to access this view
-
 @method_decorator(login_required, name='dispatch')
 class BookUpdateView(UpdateView):
-    # Specify the model to use
     model = Book
+    form_class = BookUpdateForm
     # Specify the template name to use
     template_name = 'products/book_form.html'
-    # Specify the fields to be included in the form
-    fields = ['isbn', 'title', 'small_description', 'description', 'author', 'price',
-              'rating', 'stock', 'cover_image', 'category', 'subcategory', 'publication_date', 'publisher', 'pages', 'language']
+    # Specify the URL to redirect to after a successful submission
+    success_url = reverse_lazy('products:book_list')
 
-    # staff_member_required is a decorator that checks if the user is a staff member
-    @method_decorator(staff_member_required(login_url=reverse_lazy('home')))
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+    # The dispatch method is used to check if the user is logged in and a staff member
+    @method_decorator(staff_member_required(login_url=reverse_lazy('products:book_list')))
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    # The form_valid method is used to set the user field of the book to the current user
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['action'] = 'Update'
+        return context
+
 
 # The BookDeleteView allows the user to delete a specific book
 # The user must be logged in and a staff member to access this view
@@ -212,13 +229,13 @@ class BookDeleteView(DeleteView):
     # Specify the template name to use
     template_name = 'products/book_confirm_delete.html'
     # Specify the URL to redirect to after a successful deletion
-    success_url = '/books/'
+    # Redirect to the book list page on successful deletion
+    success_url = reverse_lazy('products:book_list')
 
     # staff_member_required is a decorator that checks if the user is a staff member
     @method_decorator(staff_member_required(login_url=reverse_lazy('home')))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-
 
 
 # add to favorites
