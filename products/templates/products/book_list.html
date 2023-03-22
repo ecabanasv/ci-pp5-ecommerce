@@ -46,6 +46,7 @@
     </div>
     <div class="row">
       <div class="col">
+        <h4 class="text-center">Subcategories</h4>
         <div class="subcategories">
           <ul class="subcategories-list d-none d-md-flex">
             <li><a href="{% url 'products:book_list' %}">All</a></li>
@@ -176,7 +177,7 @@
                       <a class="text-success" href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
                       {% endif %}
                       {% if user.is_authenticated and user.is_staff %}
-                      <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit"></i></a>
+                      | <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit"></i></a>
                       <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt"></i></a>
                       {% endif %}
                     </div>
