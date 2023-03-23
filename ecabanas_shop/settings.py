@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['ecabanas-bookstore.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['ecabanas-bookstore.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -54,8 +54,6 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'contact',
-    # 'blog',
-    # 'contact',
 
     # Other
     'crispy_forms',
@@ -98,6 +96,9 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates', 'allauth'),
             os.path.join(BASE_DIR, 'products/templates'),
             os.path.join(BASE_DIR, 'cart/templates'),
+            os.path.join(BASE_DIR, 'checkout/templates'),
+            os.path.join(BASE_DIR, 'profiles/templates'),
+            os.path.join(BASE_DIR, 'contact/templates'),
             ],
             
         'APP_DIRS': True,
@@ -211,7 +212,7 @@ if 'USE_AWS' in os.environ:
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-    
+
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'ecabanas-bookstore'
     AWS_S3_REGION_NAME = 'eu-west-1'
