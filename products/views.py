@@ -123,6 +123,7 @@ class BookListView(ListView):
             book_count=Count('books')).filter(book_count__gt=0).order_by('name')
         # Add current subcategory name to the context
         subcategory = self.request.GET.get('subcategory', '')
+        # Add current subcategory name to the context
         context['subcategory'] = subcategory
         if subcategory:
             current_subcategory = SubCategory.objects.get(pk=subcategory)
@@ -135,6 +136,7 @@ class BookListView(ListView):
         books = paginator.get_page(page)
         context['books'] = books
 
+        # Add favorite books to the context
         if self.request.user.is_authenticated:
             context['favorite_books'] = set(FavoriteBook.objects.filter(
                 user=self.request.user).values_list('book_id', flat=True))
@@ -184,6 +186,7 @@ class BookCreateView(CreateView):
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Book created successfully', extra_tags='created')
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -211,6 +214,7 @@ class BookUpdateView(UpdateView):
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Book updated successfully', extra_tags='updated')
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -228,7 +232,7 @@ class BookDeleteView(DeleteView):
     model = Book
     # Specify the template name to use
     template_name = 'products/book_confirm_delete.html'
-    # Specify the URL to redirect to after a successful deletion
+
     # Redirect to the book list page on successful deletion
     success_url = reverse_lazy('products:book_list')
 
@@ -236,6 +240,11 @@ class BookDeleteView(DeleteView):
     @method_decorator(staff_member_required(login_url=reverse_lazy('home')))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    # The delete method is used to display a success message after the book is deleted
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, 'Book deleted successfully', extra_tags='deleted')
+        return super().delete(request, *args, **kwargs)
 
 
 # add to favorites
