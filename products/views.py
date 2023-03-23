@@ -65,7 +65,7 @@ class BookListView(ListView):
     # Specify the default sorting order for the books
     ordering = ['title']
     # Specify the number of books to be displayed per page
-    paginate_by = 6
+    paginate_by = 9
 
     def get_queryset(self):
         queryset = super().get_queryset()
