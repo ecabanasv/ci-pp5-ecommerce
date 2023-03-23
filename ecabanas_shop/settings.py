@@ -94,11 +94,6 @@ TEMPLATES = [
         'DIRS': [ 
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
-            os.path.join(BASE_DIR, 'products/templates'),
-            os.path.join(BASE_DIR, 'cart/templates'),
-            os.path.join(BASE_DIR, 'checkout/templates'),
-            os.path.join(BASE_DIR, 'profiles/templates'),
-            os.path.join(BASE_DIR, 'contact/templates'),
             ],
             
         'APP_DIRS': True,
