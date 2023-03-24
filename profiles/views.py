@@ -7,7 +7,10 @@ from django.contrib.auth.decorators import login_required
 
 # Import the models
 from .models import UserProfile
+# Import the Order model
 from checkout.models import Order
+# Import the FavoriteBook model
+from products.models import FavoriteBook
 
 # Import the form
 from .forms import UserProfileForm
@@ -55,6 +58,21 @@ def order_history(request, order_number):
     context = {
         'order': order,
         'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+# favourites view
+# @login_required is a decorator that checks if the user is logged in
+
+@login_required
+def favourites(request):
+    """ Display the user's favourites. """
+    favourites = FavoriteBook.objects.filter(user=request.user)
+
+    template = 'profiles/favourites.html'
+    context = {
+        'favourites': favourites,
     }
 
     return render(request, template, context)
