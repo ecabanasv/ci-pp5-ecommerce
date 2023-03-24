@@ -39,14 +39,15 @@
     </h1>
       <div class="d-grid gap-2 d-flex justify-content-start">
         {% if user.is_authenticated and user.is_staff %}
-        <a href="{% url 'products:book_create' %}"><i class="fa-solid fa-plus"></i><span class="text-primary"> ADD BOOK</span></a>
+        <a href="{% url 'products:book_create' %}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-plus"></i> Add book</a>
         {% endif %}
       </div>
     </div>
     </div>
     <div class="row">
       <div class="col">
-        <h4 class="text-center">Subcategories</h4>
+        <h4 class="text-center mt-4">Subcategories</h4>
+        <hr class="my-4">
         <div class="subcategories">
           <ul class="subcategories-list d-none d-md-flex">
             <li><a href="{% url 'products:book_list' %}">All</a></li>
@@ -68,7 +69,7 @@
       </div>
     </div>    
     <hr>
-    <div class="row mb-2 d-flex justify-content-end">
+    <div class="row mb-2 me-2 d-flex justify-content-end">
       {% if books.paginator.count > 1 %}
       <!-- Sort dropdown menu -->
       <div class="dropdown">
@@ -162,23 +163,23 @@
                   <h5 class="card-title">{{ book.title }} {% if book.stock == 0 %} <span class="text-danger"><small>(No
                         stock)</small></span>{% endif %}</h5>
                   <p class="card-text">{{ book.author }}</p>
-                  <p class="card-text">{{ book.small_description }}</p>
+                  <p class="card-text d-none d-md-flex">{{ book.small_description }}</p>
                   <p class="card-text">Price: {{ book.price }} EUR</p>
                   <div class="d-flex justify-content-between">
                     <p class="card-text mb-0">Rating: {{ book.rating }}</p>
                     <div class="d-grid gap-2 d-flex justify-content-center">
-                      <a class="text-info" href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info"></i></a>
+                      <a class="text-info" href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info fa-lg"></i></a>
                       {% if book.id in favorite_books %}
-                      <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart"></i></a>
+                      <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart fa-lg"></i></a>
                       {% else %}
-                      <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart"></i></a>
+                      <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart fa-lg"></i></a>
                       {% endif %}
                       {% if book.stock > 0 %}
-                      <a class="text-success" href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                      <a class="text-success" href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                       {% endif %}
                       {% if user.is_authenticated and user.is_staff %}
-                      | <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit"></i></a>
-                      <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt"></i></a>
+                      | <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit fa-lg"></i></a>
+                      <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt fa-lg"></i></a>
                       {% endif %}
                     </div>
                   </div>

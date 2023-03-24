@@ -68,7 +68,7 @@ a:visited {
 
 .book-cover-image {
     width: 50px;
-    height: 50px;
+    height: 75px;
     margin-right: 10px;
 }
 
@@ -172,6 +172,7 @@ a:visited {
 }
 
 .subcategories-list li a {
+    font-size: 0.7rem;
     display: inline-block;
     color: #333;
     text-align: center;
@@ -202,14 +203,6 @@ a:visited {
 
 .card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.card-img {
-    height: 200px;
-    object-fit: cover;
-    width: 100%;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 }
 
 .card-body {
@@ -299,6 +292,12 @@ a:visited {
 }
 
 .btn-outline-secondary.active {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.dropdown-item.active, .dropdown-item:active {
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
@@ -455,6 +454,11 @@ input[name='q']::placeholder {
     .navbar-nav {
         height: auto;
     }
+
+    .card-img {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
 }
 
 /* For desktop devices */
@@ -464,5 +468,13 @@ input[name='q']::placeholder {
         justify-content: center;
         align-items: center;
         height: 60px;
+    }
+
+    .card-img {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
     }
 }
