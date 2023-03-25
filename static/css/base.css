@@ -471,25 +471,38 @@ input[name='q']::placeholder {
 
 /* For mobile and tablet devices */
 @media (max-width: 992px) {
-    .navbar-nav {
-        height: auto;
+
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem;
     }
 
-    .card-img {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+    .nav-link {
+        padding: 0.15rem;
+    }
+
+    .nav-link i.fa-lg {
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        padding: .6rem .6rem;
+        font-size: 1rem;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+    }
+
+    .book-list-icons {
+        font-size: 0.7rem;
+        align-items: center;
     }
 }
 
+
 /* For desktop devices */
 @media (min-width: 992px) {
-    .navbar-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-    }
-
     .card-img {
         height: 200px;
         object-fit: cover;
