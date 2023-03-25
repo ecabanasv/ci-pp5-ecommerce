@@ -13,7 +13,7 @@
         {% for favorite in favourites %}
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <a href="{% url 'products:book_detail' favorite.book.id %}">{{ favorite.book.title }}</a>
-            <span class="badge bg-danger rounded-pill"><a href="{% url 'products:remove_from_favorites' favorite.book.id %}"><i class="fas fa-times"></i></a></span>
+            <span class="badge rounded-pill"><a href="{% url 'products:remove_from_favorites' favorite.book.id %}"><i class="fas fa-times"></i></a></span>
           </li>
         {% empty %}
           <li class="list-group-item">You have no favourite books yet.</li>
