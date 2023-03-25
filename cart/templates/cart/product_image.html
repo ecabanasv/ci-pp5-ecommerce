@@ -1,5 +1,5 @@
 {% if item.product.cover_image %}
-<a href="{% url 'products:book_detail' item.product.id %}"><img class="w-25" src="{{ item.product.cover_image.url }}" alt="{{ item.product.title }}"></a>
+<a href="{% url 'products:book_detail' item.product.id %}"><img class="w-50" src="{{ item.product.cover_image.url }}" alt="{{ item.product.title }}"></a>
 {% else %}
-<a href="{% url 'products:book_detail' item.product.id %}"><img class="w-25" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.title }}"></a>
+<a href="{% url 'products:book_detail' item.product.id %}"><img class="w-50" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.title }}"></a>
 {% endif %}

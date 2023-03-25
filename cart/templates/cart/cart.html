@@ -24,12 +24,12 @@
         <div class="col">
             {% if cart_items %}
             <div class="d-block d-md-none mx-4 mx-sm-0">
-                <div class="row">
+                <div class="row text-center">
                     <div class="col">
                         {% include "cart/cart_total.html" %}
                     </div>
                 </div>
-                <div class="row">
+                <div class="row text-center my-4">
                     <div class="col">
                         {% include "cart/checkout_buttons.html" %}
                         <p class="text-muted my-3">A summary of your cart contents is below</p>
@@ -37,7 +37,7 @@
                 </div>
                 {% for item in cart_items %}
                 <div class="row">
-                    <div class="col-12 col-sm-6 mb-3">
+                    <div class="col-12 col-sm-6 mb-3 text-center">
                         {% include "cart/product_image.html" %}
                     </div>
                     <div class="col-12 col-sm-6 mb-3">
@@ -57,11 +57,6 @@
                     </div>
                 </div>
                 {% endfor %}
-                <div class="btt-button shadow-sm rounded-0 border-gold">
-                    <div class="btt-link d-flex h-100">
-                        <i class="fas fa-arrow-up text-jet mx-auto my-auto"></i>
-                    </div>
-                </div>
             </div>
             <div class="table-responsive rounded d-none d-md-block">
                 <table class="table table-sm table-borderless">
@@ -77,7 +72,7 @@
                     </thead>
                     {% for item in cart_items %}
                     <tr>
-                        <td class="p-3 w-25">
+                        <td class="p-3 text-center">
                             {% include "cart/product_image.html" %}
                         </td>
                         <td class="py-3">
@@ -112,7 +107,7 @@
             </div>
             {% else %}
             <p class="lead mx-4 mx-sm-0 mb-4">Your cart is empty.</p>
-            <div class="mx-4 mx-sm-0">
+            <div class="mx-4 mb-4 mx-sm-0">
                 <a href="{% url 'products:book_list' %}" class="btn btn-outline-dark border-gold rounded-0 ">
                     <span class="icon">
                         <i class="fas fa-chevron-left"></i>
