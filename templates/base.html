@@ -184,6 +184,22 @@
           });
       });
    </script>
+   <!-- Scroll to top button -->
+   <script>
+    $(document).ready(function () {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('#scroll-top-btn').fadeIn();
+        } else {
+          $('#scroll-top-btn').fadeOut();
+        }
+      });
+      $('#scroll-top-btn').click(function () {
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+      });
+    });
+    </script>
   <script>
     // Select the search input field
     document.querySelector("input[name='search']").addEventListener("input", function () {
@@ -247,6 +263,10 @@
     });
   </script>
   {% endblock %}
+  <!-- Scroll to top button -->
+  <a id="scroll-top-btn" href="#" class="btn btn-primary btn-lg scroll-top-btn" role="button" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 </body>
 
 </html>

@@ -48,6 +48,26 @@ a:visited {
     margin: 0 auto;
 }
 
+/* arrow to top */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .scroll-top-btn:hover {
+    background-color: #777;
+  }
+  
+
 /* search bar */
 
 .book-ajax-list {
