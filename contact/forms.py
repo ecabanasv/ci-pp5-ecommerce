@@ -1,22 +1,23 @@
-# import forms
 from django import forms
-# import the Contact model
 from .models import Contact
-# import the FormHelper and Submit classes
 from crispy_forms.helper import FormHelper
-# import the Submit class
 from crispy_forms.layout import Submit
-# import the ReCaptchaField class
 from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
+from django.conf import settings
 
-# Create the ContactForm
+
 class ContactForm(forms.ModelForm):
-    # add the ReCaptchaField
-    captcha = ReCaptchaField()
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
+        attrs={
+            'data-theme': 'light',
+        }
+    ))
+
 
     class Meta:
         model = Contact
-        fields = '__all__'
+        fields = ('__all__')
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
