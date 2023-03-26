@@ -20,6 +20,8 @@ from django.contrib import messages
 from django.db.models import Q
 # Count is used to count the number of items in a query
 from django.db.models import Count
+# escape is used to escape HTML characters
+from django.utils.html import escape
 # The following imports are used to create a formset
 from .models import Book, FavoriteBook, SubCategory
 # The following imports are used to create a formset
@@ -185,8 +187,11 @@ class BookCreateView(CreateView):
 
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        messages.success(self.request, 'Book created successfully', extra_tags='created')
+        book = form.save(commit=False)
+        book.user = self.request.user
+        book.save()
+        book_title = escape(book.title)
+        messages.success(self.request, f'Book "{book_title}" created successfully', extra_tags='created')
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -213,9 +218,10 @@ class BookUpdateView(UpdateView):
 
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
-        form.instance.user = self.request.user
-        messages.success(self.request, 'Book updated successfully', extra_tags='updated')
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        book_title = escape(self.object.title)
+        messages.info(self.request, f'Book "{book_title}" updated successfully', extra_tags='updated')
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -243,7 +249,9 @@ class BookDeleteView(DeleteView):
 
     # The delete method is used to display a success message after the book is deleted
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, 'Book deleted successfully', extra_tags='deleted')
+        book = self.get_object()
+        book_title = escape(book.title)
+        messages.error(self.request, f'Book "{book_title}" deleted successfully', extra_tags='deleted')
         return super().delete(request, *args, **kwargs)
 
 
@@ -276,8 +284,8 @@ def remove_from_favorites(request, book_id):
         FavoriteBook, user=request.user, book=book)
     favorite_book.delete()
 
-    messages.success(
-        request, f"'{book.title}' has been removed from your favorites.", extra_tags='favorites')
+    messages.error(
+        request, f"'{book.title}' has been removed from your favorites.", extra_tags='removed_from_favorites')
 
     # Redirect back to the previous page
     return redirect(request.META.get('HTTP_REFERER'))
