@@ -43,14 +43,11 @@ class ContactView(View):
                 {'name': name , 'message': message})
             # send the email
             send_mail(
-                # subject
-                'Message from ' + name,
+                subject,
                 # message
                 message,
                 # from email
                 email,
-                # subject
-                subject,
                 # to email
                 [settings.EMAIL_HOST_USER],
                 # fail_silently
