@@ -1,60 +1,65 @@
-<div class="toast custom-toast rounded-0 border-gold" data-autohide="false">
-    <div class="w-100 bg-success"></div>
+<div class="toast custom-toast rounded-0 border-gold" data-bs-autohide="false">
+    <div class="w-100 toast-capper bg-success"></div>
     <div class="toast-header bg-white text-dark">
-        <strong class="mr-auto">Success!</strong>
-        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+      {% if 'favorites' in message.tags %}
+      <strong class="me-auto">Added to favourites!</strong>
+      <button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+      {% elif 'created' in message.tags %}
+      <strong class="me-auto">Book created!</strong>
+      <button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+      {% elif 'added_to_cart' in message.tags and grand_total != on_profile_page %}
+      <strong class="me-auto">Book added to cart!</strong>
+      <button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+      {% endif %}
     </div>
+    {% if 'added_to_cart' in message.tags and grand_total != on_profile_page %}
     <div class="toast-body bg-white">
         <div class="row">
             <div class="col">
                 {{ message }}
             </div>
         </div>
-            {% if 'favorites' in message.tags %}
-            {% elif 'removed_from_favorites' in message.tags %}
-            {% elif 'created' in message.tags %}
-            {% elif 'updated' in message.tags %}
-            {% elif 'deleted' in message.tags %}
-            {% elif 'added_to_cart' in message.tags and grand_total != on_profile_page %}
-                <p class="bg-white text-jet py-1">Your Cart ({{ product_count }})</p>
-                <div class="bag-notification-wrapper">
-                    {% for item in cart_items %}
-                        <div class="row">
-                            <div class="col-3 my-1">
-                                {% if item.product.cover_image %}
-                                <img class="w-100" src="{{ item.product.cover_image.url }}" alt="{{ item.product.title }}">
-                                {% else %}
-                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.title }}">
-                                {% endif %}
-                            </div>
-                            <div class="col-9">
-                                <p class="my-0"><strong>{{ item.product.title }}</strong></p>
-                                <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
+        <p class="bg-white text-jet py-1">Your Cart ({{ product_count }})</p>
+        <div class="bag-notification-wrapper">
+            {% for item in cart_items %}
+            <div class="row">
+                <div class="col-3 my-1">
+                    {% if item.product.cover_image %}
+                    <img class="w-100" src="{{ item.product.cover_image.url }}" alt="{{ item.product.title }}">
+                    {% else %}
+                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.title }}">
+                    {% endif %}
                 </div>
-                <div class="row">
-                    <div class="col">
-                            <p class="mt-3 mb-1 text-black">
-                                Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
-                                <span class="float-right">€{{ total|floatformat:2 }}</span>
-                            </p>
-                        {% if free_delivery_delta > 0 %}
-                        <p class="mb-0 p-2 shadow-sm text-black text-center">
-                            Spend <strong>€{{ free_delivery_delta }}</strong> more to get free delivery!
-                        </p>
-                        {% endif %}
-                        <a href="{% url 'cart:view_cart' %}" class="btn btn-outline-dark border-gold btn-block rounded-0">
-                            <span class="text-uppercase">Go To Secure Checkout</span>
-                            <span class="icon">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </a>
-                    </div>
+                <div class="col-9">
+                    <p class="my-0"><strong>{{ item.product.title }}</strong></p>
+                    <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                 </div>
-            {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="mt-3 mb-1 text-black">
+                    Total{% if free_delivery_delta > 0 %} (Exc. delivery){% endif %}:
+                    <span class="float-end">€{{ total|floatformat:2 }}</span>
+                </p>
+                {% if free_delivery_delta > 0 %}
+                <p class="mb-0 p-2 shadow-sm text-black text-center">
+                    Spend <strong>€{{ free_delivery_delta }}</strong> more to get free delivery!
+                </p>
+                {% endif %}
+                <a href="{% url 'cart:view_cart' %}" class="btn btn-outline-dark border-gold btn-block rounded-0">
+                    <span class="text-uppercase">Go To Secure Checkout</span>
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
     </div>
+    {% else %}
+    <div class="toast-body bg-white">
+        {{ message }}
+    </div>
+    {% endif %}
 </div>

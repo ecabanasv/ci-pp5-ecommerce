@@ -61,12 +61,35 @@ a:visited {
     color: white;
     cursor: pointer;
     border-radius: 4px;
-  }
-  
-  .scroll-top-btn:hover {
+}
+
+.scroll-top-btn:hover {
     background-color: #777;
-  }
-  
+}
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+.bag-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 
 /* search bar */
 
@@ -159,12 +182,6 @@ a:visited {
 
 .custom-toast {
     overflow: visible;
-}
-
-.bag-notification-wrapper {
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 /* Subcategory */
@@ -317,7 +334,8 @@ a:visited {
     border-color: #6c757d;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-item.active,
+.dropdown-item:active {
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
@@ -515,7 +533,8 @@ input[name='q']::placeholder {
         font-size: .75rem;
     }
 
-    .increment-qty, .decrement-qty {
+    .increment-qty,
+    .decrement-qty {
         padding: .25rem .5rem !important;
     }
 }

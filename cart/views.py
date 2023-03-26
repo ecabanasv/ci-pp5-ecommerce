@@ -1,14 +1,19 @@
+# shortcuts imported from django.shortcuts
 from django.shortcuts import render, redirect, get_object_or_404, reverse, HttpResponse
+# messages imported from django.contrib
 from django.contrib import messages
+# models imported from products
 from products.models import Book
 
 
+# view_cart function
 def view_cart(request):
     """ Renders the cart page """
 
     return render(request, 'cart/cart.html')
 
 
+# add_to_cart function
 def add_to_cart(request, item_id):
     """ Adds a specified quantity of a product to the cart """
 
@@ -31,7 +36,8 @@ def add_to_cart(request, item_id):
 
     if total_quantity > product.stock:
         messages.error(request, f'Sorry, we only have {product.stock} units of {product.title} in stock. Please adjust the quantity.')
-        return redirect(redirect_url)
+        # Redirect back to the previous page
+        return redirect(request.META.get('HTTP_REFERER'))
 
     if str(item_id) in list(cart.keys()):
         cart[str(item_id)] += quantity
@@ -42,10 +48,11 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
     request.session.save()
-    return redirect(redirect_url)
+    # Redirect back to the previous page
+    return redirect(request.META.get('HTTP_REFERER'))
 
 
-
+# adjust_cart function
 def adjust_cart(request, item_id):
     """ Adjusts the quantity of a specified product to the specified amount """
 
@@ -74,7 +81,7 @@ def adjust_cart(request, item_id):
 
 
 
-
+# remove_from_cart function
 def remove_from_cart(request, item_id):
     """ Remove the item from the shopping bag """
     try:
