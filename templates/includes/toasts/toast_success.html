@@ -10,6 +10,9 @@
       {% elif 'added_to_cart' in message.tags and grand_total != on_profile_page %}
       <strong class="me-auto">Book added to cart!</strong>
       <button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
+      {% else %}
+      <strong class="me-auto">Success!</strong>
+      <button type="button" class="btn-close text-dark" data-bs-dismiss="toast" aria-label="Close"></button>
       {% endif %}
     </div>
     {% if 'added_to_cart' in message.tags and grand_total != on_profile_page %}
