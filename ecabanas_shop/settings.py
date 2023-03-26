@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'contact',
+    'captcha', # required by django-recaptcha
 
     # Other
     'crispy_forms',
