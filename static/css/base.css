@@ -369,6 +369,12 @@ a:visited {
 }
 
 /* Add to cart form */
+
+.cart-image {
+    width: 30%;
+    object-fit: contain;
+}
+
 .qty_input {
     width: 4rem;
     margin-right: 0.5rem;
