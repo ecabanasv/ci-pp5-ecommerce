@@ -209,7 +209,7 @@ a:visited {
 }
 
 .subcategories-list li a {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     display: inline-block;
     color: #333;
     text-align: center;
@@ -517,6 +517,69 @@ footer {
 
 .footer-text {
     margin-top: 20px;
+}
+
+/* form */
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.asteriskField {
+    color: red;
+}
+
+button[type="submit"] {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#div_id_isbn,
+#div_id_title,
+#div_id_small_description,
+#div_id_description,
+#div_id_category,
+#div_id_subcategory,
+#div_id_publisher,
+#div_id_author,
+#div_id_price,
+#div_id_stock,
+#div_id_rating,
+#div_id_cover_image,
+#div_id_publication_date,
+#div_id_pages,
+#div_id_language {
+    margin-bottom: 20px;
 }
 
 

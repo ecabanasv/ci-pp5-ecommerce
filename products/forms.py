@@ -1,6 +1,10 @@
+# forms for the products app
 from django import forms
+# Formhelper for crispy forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Field, Layout
+# Submit button for crispy forms
+from crispy_forms.layout import Submit
+# Import the models
 from .models import Book, Category, SubCategory, Publisher, Author
 
 
@@ -38,7 +42,7 @@ class BookForm(forms.ModelForm):
             'pages': 'Pages',
             'language': 'Language',
         }
-
+        # Add placeholders and classes, remove auto-generated
         widgets = {
             'isbn': forms.TextInput(attrs={'placeholder': 'ISBN-13 or ISBN-10', 'minlength': 10, 'maxlength' : 13,'required': 'required'}),
             'title': forms.TextInput(attrs={'placeholder': 'Title', 'maxlength': 100, 'required': 'required'}),
@@ -57,7 +61,7 @@ class BookForm(forms.ModelForm):
             'language': forms.TextInput(attrs={'placeholder': 'Language', 'maxlength': 20, 'minlength': 2, 'required': 'required'}),
         }
 
-
+    # Override the init method to add the crispy forms helper
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['author'].widget = forms.Select(choices=[(author.id, author.name) for author in Author.objects.all()])
@@ -131,155 +135,156 @@ class BookUpdateForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Save'))
 
+# I will add the rest of the forms in later releases
+
+# # class CategoryForm(forms.ModelForm):
 
 # class CategoryForm(forms.ModelForm):
+#     class Meta:
+#         model = Category
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Category Name',
+#             'description': 'Description',
+#             'friendly_name': 'Friendly Name',
+#         }
 
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = '__all__'
-        labels = {
-            'name': 'Category Name',
-            'description': 'Description',
-            'friendly_name': 'Friendly Name',
-        }
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
+# # class CategoryUpdateForm(forms.ModelForm):
 
 # class CategoryUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = Category
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Category Name',
+#             'description': 'Description',
+#             'friendly_name': 'Friendly Name',
+#         }
 
-class CategoryUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = '__all__'
-        labels = {
-            'name': 'Category Name',
-            'description': 'Description',
-            'friendly_name': 'Friendly Name',
-        }
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
 
+# # class SubCategoryForm(forms.ModelForm):
 
 # class SubCategoryForm(forms.ModelForm):
+#     class Meta:
+#         model = SubCategory
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Subcategory Name',
+#             'description': 'Description',
+#             'category': 'Category',
+#             'friendly_name': 'Friendly Name',
+#         }
 
-class SubCategoryForm(forms.ModelForm):
-    class Meta:
-        model = SubCategory
-        fields = '__all__'
-        labels = {
-            'name': 'Subcategory Name',
-            'description': 'Description',
-            'category': 'Category',
-            'friendly_name': 'Friendly Name',
-        }
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['author'].widget = forms.Select(choices=[(author.id, author.name) for author in Author.objects.all()])
+#         self.fields['publisher'].widget = forms.Select(choices=[(publisher.id, publisher.name) for publisher in Publisher.objects.all()])
+#         self.fields['category'].widget = forms.Select(choices=[(category.id, category.name) for category in Category.objects.all()])
+#         self.fields['subcategory'].widget = forms.Select(choices=[(subcategory.id, subcategory.name) for subcategory in SubCategory.objects.all()])
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['author'].widget = forms.Select(choices=[(author.id, author.name) for author in Author.objects.all()])
-        self.fields['publisher'].widget = forms.Select(choices=[(publisher.id, publisher.name) for publisher in Publisher.objects.all()])
-        self.fields['category'].widget = forms.Select(choices=[(category.id, category.name) for category in Category.objects.all()])
-        self.fields['subcategory'].widget = forms.Select(choices=[(subcategory.id, subcategory.name) for subcategory in SubCategory.objects.all()])
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
 
+# # class SubCategoryUpdateForm(forms.ModelForm):
 
 # class SubCategoryUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = SubCategory
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Subcategory Name',
+#             'description': 'Description',
+#             'category': 'Category',
+#             'friendly_name': 'Friendly Name',
+#         }
 
-class SubCategoryUpdateForm(forms.ModelForm):
-    class Meta:
-        model = SubCategory
-        fields = '__all__'
-        labels = {
-            'name': 'Subcategory Name',
-            'description': 'Description',
-            'category': 'Category',
-            'friendly_name': 'Friendly Name',
-        }
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
 
+# # class PublisherForm(forms.ModelForm):
 
 # class PublisherForm(forms.ModelForm):
+#     class Meta:
+#         model = Publisher
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Publisher Name',
+#             'description': 'Description',
+#         }
 
-class PublisherForm(forms.ModelForm):
-    class Meta:
-        model = Publisher
-        fields = '__all__'
-        labels = {
-            'name': 'Publisher Name',
-            'description': 'Description',
-        }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
 
-# c;ass PublisherUpdateForm(forms.ModelForm):
+# # c;ass PublisherUpdateForm(forms.ModelForm):
 
-class PublisherUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Publisher
-        fields = '__all__'
-        labels = {
-            'name': 'Publisher Name',
-            'description': 'Description',
-        }
+# class PublisherUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = Publisher
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Publisher Name',
+#             'description': 'Description',
+#         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
+
+# # class AuthorForm(forms.ModelForm):
 
 # class AuthorForm(forms.ModelForm):
+#     class Meta:
+#         model = Author
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Author Name',
+#             'description': 'Description',
+#         }
 
-class AuthorForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = '__all__'
-        labels = {
-            'name': 'Author Name',
-            'description': 'Description',
-        }
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
 
+# # class AuthorUpdateForm(forms.ModelForm):
 
 # class AuthorUpdateForm(forms.ModelForm):
+#     class Meta:
+#         model = Author
+#         fields = '__all__'
+#         labels = {
+#             'name': 'Author Name',
+#             'description': 'Description',
+#         }
 
-class AuthorUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Author
-        fields = '__all__'
-        labels = {
-            'name': 'Author Name',
-            'description': 'Description',
-        }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Save'))
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper()
+#         self.helper.form_method = 'post'
+#         self.helper.add_input(Submit('submit', 'Save'))

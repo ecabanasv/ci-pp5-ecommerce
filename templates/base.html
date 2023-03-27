@@ -49,10 +49,10 @@
   <script src="{% static 'js/dropdowns.js' %}"></script>
   {% endblock %}
 
-  <title>ecabanas shop {% block extra_title %}{% endblock %}</title>
+<title>ecabanas shop {% block extra_title %}{% endblock %}</title>
 </head>
 
-<body>
+<body class="bg-light">
   <header class="container-fluid bg-light">
     <div class="row pt-lg-2 d-none d-lg-flex">
       <div class="col-lg-4 my-auto py-1 py-lg-2 text-left text-lg-left">
@@ -67,7 +67,7 @@
               value="{{ search }}" autocomplete="off" />
             <div class="input-group-append">
               <button class="form-control btn btn-black border border-black rounded-0" id="search-button" type="submit">
-                <span class="icon">
+                <span class="icon text-dark">
                   <i class="fas fa-search"></i>
                 </span>
               </button>
