@@ -1,11 +1,9 @@
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import FormView
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
-import requests
 
 from .forms import ContactForm
 
@@ -28,19 +26,6 @@ class ContactView(FormView):
         return initial
 
     def form_valid(self, form):
-        recaptcha_response = self.request.POST.get('g-recaptcha-response')
-        print(recaptcha_response) # recaptcha_response output
-        data = {
-            'secret': settings.RECAPTCHA_PRIVATE_KEY,
-            'response': recaptcha_response
-        }
-        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
-        result = r.json()
-        print(result) # result output
-        if not result['success']:
-            form.add_error(None, 'Invalid reCAPTCHA')
-            return super().form_invalid(form)
-
         name = form.cleaned_data['name']
         email = form.cleaned_data['email']
         subject = form.cleaned_data['subject']
