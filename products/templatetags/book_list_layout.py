@@ -5,6 +5,7 @@ register = template.Library()
 
 # The col_value function returns the number of columns to be used for a specific number of books
 
+
 @register.filter
 def col_value(total_books):
     if total_books == 1:
@@ -18,7 +19,9 @@ def col_value(total_books):
     else:
         return 4
 
+
 # The col_lg_value function returns the number of columns to be used for a specific number of books
+
 
 @register.filter
 def col_lg_value(total_books):
@@ -33,7 +36,9 @@ def col_lg_value(total_books):
     else:
         return 6
 
+
 # The row_value function returns the number of rows to be used for a specific number of books
+
 
 @register.filter
 def row_value(total_books):
@@ -44,7 +49,9 @@ def row_value(total_books):
     else:
         return 3
 
+
 # The items_per_row function returns the number of books to be displayed per row
+
 
 @register.filter
 def items_per_row(total_books):

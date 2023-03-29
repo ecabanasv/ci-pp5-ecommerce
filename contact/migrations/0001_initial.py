@@ -5,21 +5,71 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Contact',
+            name="Contact",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, validators=[django.core.validators.RegexValidator(message='Name can only contain letters and spaces', regex='^[a-zA-Z\\s]+$')])),
-                ('email', models.EmailField(max_length=100, validators=[django.core.validators.EmailValidator(code='invalid_email', message='Email is invalid')])),
-                ('subject', models.CharField(max_length=100, validators=[django.core.validators.RegexValidator(message='Subject can only contain letters, numbers, and common punctuation marks', regex="^[a-zA-Z0-9\\s\\-\\_\\.\\,\\!\\?\\']+")])),
-                ('message', models.TextField(max_length=1000, validators=[django.core.validators.RegexValidator(message='Message contains invalid characters', regex='^[^\\n\\r\\t\\f\\v]+$')])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        max_length=100,
+                        validators=[
+                            django.core.validators.RegexValidator(
+                                message="Name can only contain letters and spaces",
+                                regex="^[a-zA-Z\\s]+$",
+                            )
+                        ],
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        max_length=100,
+                        validators=[
+                            django.core.validators.EmailValidator(
+                                code="invalid_email",
+                                message="Email is invalid",
+                            )
+                        ],
+                    ),
+                ),
+                (
+                    "subject",
+                    models.CharField(
+                        max_length=100,
+                        validators=[
+                            django.core.validators.RegexValidator(
+                                message="Subject can only contain letters, numbers, and common punctuation marks",
+                                regex="^[a-zA-Z0-9\\s\\-\\_\\.\\,\\!\\?\\']+",
+                            )
+                        ],
+                    ),
+                ),
+                (
+                    "message",
+                    models.TextField(
+                        max_length=1000,
+                        validators=[
+                            django.core.validators.RegexValidator(
+                                message="Message contains invalid characters",
+                                regex="^[^\\n\\r\\t\\f\\v]+$",
+                            )
+                        ],
+                    ),
+                ),
             ],
         ),
     ]

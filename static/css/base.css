@@ -46,6 +46,7 @@ a:visited {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* arrow to top */
@@ -499,6 +500,10 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #f2f2f2;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .social-media {

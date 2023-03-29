@@ -7,42 +7,53 @@ from .models import Book, Category, SubCategory, Author, Publisher
 
 class BookAdmin(admin.ModelAdmin):
     # Specify the fields that should be displayed in the list view of the model in the admin interface
-    list_display = ('isbn', 'title', 'author', 'price', 'rating',
-                    'stock', 'category', 'subcategory', 'publisher')
+    list_display = (
+        "isbn",
+        "title",
+        "author",
+        "price",
+        "rating",
+        "stock",
+        "category",
+        "subcategory",
+        "publisher",
+    )
     # Specify the fields that can be searched in the list view of the model in the admin interface
-    search_fields = ('isbn', 'title', 'author__name')
+    search_fields = ("isbn", "title", "author__name")
     # Specify the fields that can be used to filter the data in the list view of the model in the admin interface
-    list_filter = ('category__name', 'subcategory__name', 'publisher__name')
+    list_filter = ("category__name", "subcategory__name", "publisher__name")
+
 
 # Define a custom ModelAdmin class for the Category model
 
 
 class CategoryAdmin(admin.ModelAdmin):
     # Specify the fields that should be displayed in the list view of the model in the admin interface
-    list_display = ('name', 'friendly_name', 'description')
+    list_display = ("name", "friendly_name", "description")
     # Specify the fields that can be searched in the list view of the model in the admin interface
-    search_fields = ('name', 'friendly_name')
+    search_fields = ("name", "friendly_name")
+
 
 # Define a custom ModelAdmin class for the SubCategory model
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
     # Specify the fields that should be displayed in the list view of the model in the admin interface
-    list_display = ('name', 'friendly_name', 'description', 'category')
+    list_display = ("name", "friendly_name", "description", "category")
     # Specify the fields that can be searched in the list view of the model in the admin interface
-    search_fields = ('name', 'friendly_name')
+    search_fields = ("name", "friendly_name")
     # Specify the fields that can be used to filter the data in the list view of the model in the admin interface
-    list_filter = ('category__name',)
+    list_filter = ("category__name",)
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
-    search_fields = ('name',)
+    list_display = ("name", "description")
+    search_fields = ("name",)
 
 
 class PublisherAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
-    search_fields = ('name',)
+    list_display = ("name", "description")
+    search_fields = ("name",)
 
 
 # Register the models with the admin site, using the custom ModelAdmin classes where applicable
