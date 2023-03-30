@@ -3,6 +3,8 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """Form for the user to fill in their order details"""
+
     class Meta:
         model = Order
         fields = (

@@ -1,3 +1,5 @@
+"""Views for the products app"""
+
 # JsonResponse is used to return a JSON response
 from django.http import JsonResponse
 
@@ -50,6 +52,7 @@ from .forms import BookForm, BookUpdateForm
 
 
 def search_books(request):
+    """Search for books"""
     queryset = Book.objects.all()
     # Get the search term from the GET request
     search_term = request.GET.get("search", "")
@@ -85,6 +88,8 @@ def search_books(request):
 
 
 class BookListView(ListView):
+    """Display a list of books"""
+
     # Specify the model to use
     model = Book
     # Specify the template name to use
@@ -97,6 +102,7 @@ class BookListView(ListView):
     paginate_by = 9
 
     def get_queryset(self):
+        """Return the queryset"""
         queryset = super().get_queryset()
         # Get the sort order from the GET request
         sort_order = self.request.GET.get("sort", "title")
@@ -139,6 +145,7 @@ class BookListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
+        """Add the sort order, search term, and category filter to the context"""
         context = super().get_context_data(**kwargs)
         # Add the sort order, search term, and category filter to the context
         context["sort"] = self.request.GET.get("sort", "title")
@@ -182,6 +189,8 @@ class BookListView(ListView):
 
 
 class BookDetailView(DetailView):
+    """Display the details of a specific book"""
+
     # Specify the model to use
     model = Book
     # Specify the template name to use
@@ -205,6 +214,8 @@ class BookDetailView(DetailView):
 
 
 class BookCreateView(CreateView):
+    """Allow the user to create a new book"""
+
     # Specify the model to use
     model = Book
     # Specify the form to use
@@ -219,10 +230,12 @@ class BookCreateView(CreateView):
         staff_member_required(login_url=reverse_lazy("products:book_list"))
     )
     def dispatch(self, *args, **kwargs):
+        """Check if the user is logged in and a staff member"""
         return super().dispatch(*args, **kwargs)
 
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
+        """Set the user field of the book to the current user"""
         book = form.save(commit=False)
         book.user = self.request.user
         book.save()
@@ -235,6 +248,7 @@ class BookCreateView(CreateView):
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
+        """Add the action to the context"""
         context = super().get_context_data(**kwargs)
         context["action"] = "Create"
         return context
@@ -244,6 +258,8 @@ class BookCreateView(CreateView):
 # The user must be logged in and a staff member to access this view
 @method_decorator(login_required, name="dispatch")
 class BookUpdateView(UpdateView):
+    """Allow the user to update a specific book"""
+
     model = Book
     form_class = BookUpdateForm
     # Specify the template name to use
@@ -256,10 +272,12 @@ class BookUpdateView(UpdateView):
         staff_member_required(login_url=reverse_lazy("products:book_list"))
     )
     def dispatch(self, *args, **kwargs):
+        """Check if the user is logged in and a staff member"""
         return super().dispatch(*args, **kwargs)
 
     # The form_valid method is used to set the user field of the book to the current user
     def form_valid(self, form):
+        """Set the user field of the book to the current user"""
         response = super().form_valid(form)
         book_title = escape(self.object.title)
         messages.info(
@@ -270,6 +288,7 @@ class BookUpdateView(UpdateView):
         return response
 
     def get_context_data(self, **kwargs):
+        """Add the action to the context"""
         context = super().get_context_data(**kwargs)
         context["action"] = "Update"
         return context
@@ -281,6 +300,8 @@ class BookUpdateView(UpdateView):
 
 @method_decorator(login_required, name="dispatch")
 class BookDeleteView(DeleteView):
+    """Allow the user to delete a specific book"""
+
     # Specify the model to use
     model = Book
     # Specify the template name to use
@@ -292,10 +313,12 @@ class BookDeleteView(DeleteView):
     # staff_member_required is a decorator that checks if the user is a staff member
     @method_decorator(staff_member_required(login_url=reverse_lazy("home")))
     def dispatch(self, request, *args, **kwargs):
+        """Check if the user is logged in and a staff member"""
         return super().dispatch(request, *args, **kwargs)
 
     # The delete method is used to display a success message after the book is deleted
     def delete(self, request, *args, **kwargs):
+        """Display a success message after the book is deleted"""
         book = self.get_object()
         book_title = escape(book.title)
         messages.error(
@@ -312,6 +335,7 @@ class BookDeleteView(DeleteView):
 
 @login_required
 def add_to_favorites(request, book_id):
+    """Add a book to the user's favorites"""
     book = get_object_or_404(Book, id=book_id)
     created = FavoriteBook.objects.get_or_create(user=request.user, book=book)
 
@@ -337,6 +361,7 @@ def add_to_favorites(request, book_id):
 
 @login_required
 def remove_from_favorites(request, book_id):
+    """Remove a book from the user's favorites"""
     book = get_object_or_404(Book, id=book_id)
     favorite_book = get_object_or_404(
         FavoriteBook, user=request.user, book=book

@@ -15,6 +15,8 @@ from .models import Book, Category, SubCategory, Publisher, Author
 
 
 class BookForm(forms.ModelForm):
+    """Form for the Book model"""
+
     class Meta:
         # The model to use
         model = Book
@@ -158,6 +160,7 @@ class BookForm(forms.ModelForm):
 
     # Override the init method to add the crispy forms helper
     def __init__(self, *args, **kwargs):
+        """Add crispy forms helper to the form"""
         super().__init__(*args, **kwargs)
         self.fields["author"].widget = forms.Select(
             choices=[
@@ -191,6 +194,8 @@ class BookForm(forms.ModelForm):
 
 
 class BookUpdateForm(forms.ModelForm):
+    """Form for updating a book"""
+
     class Meta:
         # The model to use
         model = Book
@@ -333,6 +338,7 @@ class BookUpdateForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
+        """Initialise the form"""
         super().__init__(*args, **kwargs)
         self.fields["author"].widget = forms.Select(
             choices=[

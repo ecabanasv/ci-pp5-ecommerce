@@ -9,4 +9,5 @@ register = template.Library()
 # define the filter
 @register.filter(name="calc_subtotal")
 def calc_subtotal(price, quantity):
+    """Calculate the subtotal of a product in the cart"""
     return price * quantity

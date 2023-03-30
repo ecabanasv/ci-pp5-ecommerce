@@ -7,6 +7,7 @@ from django.core.validators import RegexValidator, EmailValidator
 
 # The Contact model represents a contact form submission
 class Contact(models.Model):
+    """Contact form submission model"""
     # The name of the person submitting the contact form
     name = models.CharField(
         max_length=100,
@@ -47,4 +48,5 @@ class Contact(models.Model):
 
     # A method to return the name of the contact form submission
     def __str__(self):
+        """Return the name of the contact form submission"""
         return self.name

@@ -6,6 +6,8 @@ from .models import Book, Category, SubCategory, Author, Publisher
 
 
 class BookAdmin(admin.ModelAdmin):
+    """Custom ModelAdmin class for the Book model"""
+
     # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = (
         "isbn",
@@ -28,6 +30,8 @@ class BookAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    """Custom ModelAdmin class for the Category model"""
+
     # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = ("name", "friendly_name", "description")
     # Specify the fields that can be searched in the list view of the model in the admin interface
@@ -38,6 +42,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
+    """Custom ModelAdmin class for the SubCategory model"""
+
     # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = ("name", "friendly_name", "description", "category")
     # Specify the fields that can be searched in the list view of the model in the admin interface
@@ -47,11 +53,15 @@ class SubCategoryAdmin(admin.ModelAdmin):
 
 
 class AuthorAdmin(admin.ModelAdmin):
+    """Custom ModelAdmin class for the Author model"""
+
     list_display = ("name", "description")
     search_fields = ("name",)
 
 
 class PublisherAdmin(admin.ModelAdmin):
+    """Custom ModelAdmin class for the Publisher model"""
+
     list_display = ("name", "description")
     search_fields = ("name",)
 

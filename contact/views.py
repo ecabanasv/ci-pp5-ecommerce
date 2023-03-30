@@ -22,6 +22,7 @@ from .forms import ContactForm
 
 # class ContactView is used to display the contact form
 class ContactView(FormView):
+    """A view to display the contact form"""
     # The template to be used
     template_name = "contact/contact.html"
     # The form to be used
@@ -31,12 +32,13 @@ class ContactView(FormView):
 
     # get_context_data is used to pass data to the template
     def get_context_data(self, **kwargs):
+        """Pass data to the template"""
         context = super().get_context_data(**kwargs)
-        context["site_key"] = settings.RECAPTCHA_PUBLIC_KEY
         return context
 
     # get_initial is used to set the initial values of the form
     def get_initial(self):
+        """Set the initial values of the form"""
         initial = super().get_initial()
         if self.request.user.is_authenticated:
             initial["name"] = self.request.user.username
@@ -45,6 +47,7 @@ class ContactView(FormView):
 
     # form_valid is used to send the email
     def form_valid(self, form):
+        """Send the email"""
         name = form.cleaned_data["name"]
         email = form.cleaned_data["email"]
         subject = form.cleaned_data["subject"]
@@ -69,9 +72,11 @@ class ContactView(FormView):
 
     # form_invalid is used to display an error message
     def form_invalid(self, form):
+        """Display an error message"""
         messages.error(self.request, "Please correct the errors below.")
         return super().form_invalid(form)
 
     # get_success_url is used to redirect to the success url
     def get_success_url(self):
+        """Redirect to the success url"""
         return reverse_lazy("contact:contact")

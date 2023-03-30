@@ -2,6 +2,7 @@ from .models import Book, Category
 
 
 def book_count_processor(request):
+    """A context processor that returns the count of books in the Book model"""
     # Get all categories in the Category model
     categories = Category.objects.all()
 

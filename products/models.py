@@ -16,6 +16,8 @@ from django.core.validators import (
 
 
 class Category(models.Model):
+    """Category model"""
+
     # The name of the category
     name = models.SlugField(
         max_length=100,
@@ -58,15 +60,19 @@ class Category(models.Model):
     # Define a string representation for the model
 
     def __str__(self):
+        """String representation of the model"""
         return self.name
 
     # A method to get the friendly name for the category
     def get_friendly_name(self):
+        """Get the friendly name for the category"""
         return self.friendly_name
 
 
 # The SubCategory model represents a subcategory of books within a Category
 class SubCategory(models.Model):
+    """Subcategory model"""
+
     # The name of the subcategory
     name = models.SlugField(
         max_length=100,
@@ -114,10 +120,12 @@ class SubCategory(models.Model):
     # Define a string representation for the model
 
     def __str__(self):
+        """String representation of the model"""
         return self.name
 
     # A method to get the friendly name for the subcategory
     def get_friendly_name(self):
+        """Get the friendly name for the subcategory"""
         return self.friendly_name
 
 
@@ -125,6 +133,8 @@ class SubCategory(models.Model):
 
 
 class Publisher(models.Model):
+    """Publisher model"""
+
     # The name of the publisher
     name = models.CharField(
         max_length=100,
@@ -150,6 +160,7 @@ class Publisher(models.Model):
     )
 
     def __str__(self):
+        """String representation of the model"""
         return self.name
 
 
@@ -157,6 +168,8 @@ class Publisher(models.Model):
 
 
 class Author(models.Model):
+    """Author model"""
+
     # The name of the author
     name = models.CharField(
         max_length=100,
@@ -183,6 +196,7 @@ class Author(models.Model):
     )
 
     def __str__(self):
+        """String representation of the model"""
         return self.name
 
 
@@ -190,6 +204,8 @@ class Author(models.Model):
 
 
 class Book(models.Model):
+    """Book model"""
+
     # ISBN number of the book
     # regex for isbn-10 and isbn-13
     isbn = models.CharField(
@@ -315,6 +331,7 @@ class Book(models.Model):
     # Define a string representation for the model
 
     def __str__(self):
+        """String representation of the model"""
         return self.title
 
 
@@ -322,10 +339,14 @@ class Book(models.Model):
 
 
 class FavoriteBook(models.Model):
+    """FavoriteBook model"""
+
     # A foreign key to the User model
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # A foreign key to the Book model
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     class Meta:
+        """Meta class"""
+
         unique_together = ("user", "book")
