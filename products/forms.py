@@ -117,13 +117,11 @@ class BookForm(forms.ModelForm):
                     "max": "100",
                     "min": "0",
                     "value": "0",
-                    "maxlength": 3,
-                    "minlength": 1,
                     "required": "required",
                 }
             ),
             "cover_image": forms.ClearableFileInput(
-                attrs={"accept": "image/*", "placeholder": "Cover Image"}
+                attrs={"accept": "image/*"}
             ),
             "category": forms.TextInput(attrs={"placeholder": "Category"}),
             "subcategory": forms.TextInput(
@@ -132,7 +130,6 @@ class BookForm(forms.ModelForm):
             "publication_date": forms.DateInput(
                 attrs={
                     "type": "date",
-                    "placeholder": "Publication Date",
                     "required": "required",
                 }
             ),
@@ -143,8 +140,6 @@ class BookForm(forms.ModelForm):
                     "min": 0,
                     "max": 5000,
                     "placeholder": "Pages",
-                    "maxlength": 4,
-                    "minlength": 1,
                     "required": "required",
                 }
             ),
@@ -295,14 +290,11 @@ class BookUpdateForm(forms.ModelForm):
                     "step": "1",
                     "max": "100",
                     "min": "0",
-                    "value": "0",
-                    "maxlength": 3,
-                    "minlength": 1,
                     "required": "required",
                 }
             ),
             "cover_image": forms.ClearableFileInput(
-                attrs={"accept": "image/*", "placeholder": "Cover Image"}
+                attrs={"accept": "image/*"}
             ),
             "category": forms.TextInput(attrs={"placeholder": "Category"}),
             "subcategory": forms.TextInput(
@@ -311,7 +303,6 @@ class BookUpdateForm(forms.ModelForm):
             "publication_date": forms.DateInput(
                 attrs={
                     "type": "date",
-                    "placeholder": "Publication Date",
                     "required": "required",
                 }
             ),
@@ -322,8 +313,6 @@ class BookUpdateForm(forms.ModelForm):
                     "min": 0,
                     "max": 5000,
                     "placeholder": "Pages",
-                    "maxlength": 4,
-                    "minlength": 1,
                     "required": "required",
                 }
             ),
