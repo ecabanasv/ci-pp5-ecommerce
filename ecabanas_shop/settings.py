@@ -30,7 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "DEVELOPMENT" in os.environ
+# DEBUG = True
+
+DEBUG = False
 
 ALLOWED_HOSTS = ["ecabanas-bookstore.herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -54,7 +56,6 @@ INSTALLED_APPS = [
     "checkout",
     "profiles",
     "contact",
-    "captcha",  # required by django-recaptcha
     # Other
     "crispy_forms",
     "crispy_bootstrap5",
@@ -123,10 +124,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1  # required by allauth
-
-EMAIL_BACKEND = (
-    "django.core.mail.backends.console.EmailBackend"  # required by allauth
-)
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # required by allauth
 ACCOUNT_EMAIL_REQUIRED = True  # required by allauth
@@ -245,7 +242,4 @@ else:
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
-# recaptcha
 
-RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
-RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
