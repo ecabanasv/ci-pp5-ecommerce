@@ -15,10 +15,6 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-from os import path
-
-if path.exists("env.py"):
-    import env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -240,4 +236,3 @@ else:
     EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
     EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
     DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
-

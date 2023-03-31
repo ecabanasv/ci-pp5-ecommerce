@@ -8,7 +8,6 @@ from .models import Book, Category, SubCategory, Author, Publisher
 class BookAdmin(admin.ModelAdmin):
     """Custom ModelAdmin class for the Book model"""
 
-    # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = (
         "isbn",
         "title",
@@ -20,9 +19,7 @@ class BookAdmin(admin.ModelAdmin):
         "subcategory",
         "publisher",
     )
-    # Specify the fields that can be searched in the list view of the model in the admin interface
     search_fields = ("isbn", "title", "author__name")
-    # Specify the fields that can be used to filter the data in the list view of the model in the admin interface
     list_filter = ("category__name", "subcategory__name", "publisher__name")
 
 
@@ -32,9 +29,7 @@ class BookAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     """Custom ModelAdmin class for the Category model"""
 
-    # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = ("name", "friendly_name", "description")
-    # Specify the fields that can be searched in the list view of the model in the admin interface
     search_fields = ("name", "friendly_name")
 
 
@@ -44,11 +39,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class SubCategoryAdmin(admin.ModelAdmin):
     """Custom ModelAdmin class for the SubCategory model"""
 
-    # Specify the fields that should be displayed in the list view of the model in the admin interface
     list_display = ("name", "friendly_name", "description", "category")
-    # Specify the fields that can be searched in the list view of the model in the admin interface
     search_fields = ("name", "friendly_name")
-    # Specify the fields that can be used to filter the data in the list view of the model in the admin interface
     list_filter = ("category__name",)
 
 
@@ -66,7 +58,7 @@ class PublisherAdmin(admin.ModelAdmin):
     search_fields = ("name",)
 
 
-# Register the models with the admin site, using the custom ModelAdmin classes where applicable
+# Register the models with the admin interface
 admin.site.register(Book, BookAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)

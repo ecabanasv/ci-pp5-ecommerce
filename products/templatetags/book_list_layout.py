@@ -3,7 +3,7 @@ from django import template
 register = template.Library()
 
 
-# The col_value function returns the number of columns to be used for a specific number of books
+""" col_value function """
 
 
 @register.filter
@@ -20,7 +20,7 @@ def col_value(total_books):
         return 4
 
 
-# The col_lg_value function returns the number of columns to be used for a specific number of books
+""" col_lg_value function """
 
 
 @register.filter
@@ -37,7 +37,7 @@ def col_lg_value(total_books):
         return 6
 
 
-# The row_value function returns the number of rows to be used for a specific number of books
+""" row value function """
 
 
 @register.filter
@@ -50,7 +50,7 @@ def row_value(total_books):
         return 3
 
 
-# The items_per_row function returns the number of books to be displayed per row
+""" items per row function """
 
 
 @register.filter

@@ -31,7 +31,7 @@ class Contact(models.Model):
         validators=[
             RegexValidator(
                 regex=r"^[a-zA-Z0-9\s\-\_\.\,\!\?\']+",
-                message="Subject can only contain letters, numbers, and common punctuation marks",
+                message="Subject contains invalid characters",
             )
         ],
     )

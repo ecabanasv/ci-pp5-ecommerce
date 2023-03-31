@@ -6,10 +6,10 @@ from django.http import JsonResponse
 # shortcuts is used to render templates and redirect to URLs
 from django.shortcuts import render, redirect, get_object_or_404
 
-# staff_member_required is a decorator that checks if the user is logged in and is a staff member
+# staff_member_required for checks if the user is a staff member
 from django.contrib.admin.views.decorators import staff_member_required
 
-# reverse_lazy is used to reverse a URL to a view when the URL pattern name is not yet available
+# reverse_lazy is used to reverse URLs
 from django.urls import reverse_lazy
 
 # method_decorator is used to apply decorators to class-based views
@@ -18,7 +18,7 @@ from django.utils.decorators import method_decorator
 # login_required is a decorator that checks if the user is logged in
 from django.contrib.auth.decorators import login_required
 
-# ListView, DetailView, CreateView, UpdateView, and DeleteView are generic class-based views
+# Import the following generic views
 from django.views.generic import (
     ListView,
     DetailView,
@@ -145,7 +145,7 @@ class BookListView(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
-        """Add the sort order, search term, and category filter to the context"""
+        """Add sort order, search term, and category filter to context"""
         context = super().get_context_data(**kwargs)
         # Add the sort order, search term, and category filter to the context
         context["sort"] = self.request.GET.get("sort", "title")
@@ -225,7 +225,7 @@ class BookCreateView(CreateView):
     # Specify the URL to redirect to after a successful submission
     success_url = reverse_lazy("products:book_list")
 
-    # The dispatch method is used to check if the user is logged in and a staff member
+    # The dispatch method: Check if user is staff and logged in
     @method_decorator(
         staff_member_required(login_url=reverse_lazy("products:book_list"))
     )
@@ -233,7 +233,7 @@ class BookCreateView(CreateView):
         """Check if the user is logged in and a staff member"""
         return super().dispatch(*args, **kwargs)
 
-    # The form_valid method is used to set the user field of the book to the current user
+    # The form_valid method
     def form_valid(self, form):
         """Set the user field of the book to the current user"""
         book = form.save(commit=False)
@@ -267,7 +267,7 @@ class BookUpdateView(UpdateView):
     # Specify the URL to redirect to after a successful submission
     success_url = reverse_lazy("products:book_list")
 
-    # The dispatch method is used to check if the user is logged in and a staff member
+    # The dispatch method: check is user staff and logged in
     @method_decorator(
         staff_member_required(login_url=reverse_lazy("products:book_list"))
     )
@@ -275,7 +275,7 @@ class BookUpdateView(UpdateView):
         """Check if the user is logged in and a staff member"""
         return super().dispatch(*args, **kwargs)
 
-    # The form_valid method is used to set the user field of the book to the current user
+    # The form_valid method
     def form_valid(self, form):
         """Set the user field of the book to the current user"""
         response = super().form_valid(form)
@@ -310,13 +310,12 @@ class BookDeleteView(DeleteView):
     # Redirect to the book list page on successful deletion
     success_url = reverse_lazy("products:book_list")
 
-    # staff_member_required is a decorator that checks if the user is a staff member
+    # staff_member_required
     @method_decorator(staff_member_required(login_url=reverse_lazy("home")))
     def dispatch(self, request, *args, **kwargs):
         """Check if the user is logged in and a staff member"""
         return super().dispatch(request, *args, **kwargs)
 
-    # The delete method is used to display a success message after the book is deleted
     def delete(self, request, *args, **kwargs):
         """Display a success message after the book is deleted"""
         book = self.get_object()

@@ -4,7 +4,7 @@ from django.db import models
 # import the User model from django.contrib.auth.models
 from django.contrib.auth.models import User
 
-# validators for the fields in the model: MinValueValidator, MaxValueValidator, RegexValidator
+# validators for the fields in the model
 from django.core.validators import (
     MinValueValidator,
     MaxValueValidator,
@@ -37,14 +37,14 @@ class Category(models.Model):
         null=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Description contains invalid characters",
                 code="invalid_category_description",
             )
         ],
     )
 
-    # A friendly name for the category, to be used in URLs and in the admin interface
+    # A friendly name for the category
     friendly_name = models.CharField(
         max_length=100,
         blank=True,
@@ -92,7 +92,7 @@ class SubCategory(models.Model):
         null=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Description contains invalid characters",
                 code="invalid_subcategory_description",
             )
@@ -104,7 +104,7 @@ class SubCategory(models.Model):
         Category, on_delete=models.CASCADE, related_name="subcategories"
     )
 
-    # A friendly name for the subcategory, to be used in URLs and in the admin interface
+    # A friendly name for the subcategory
     friendly_name = models.CharField(
         max_length=100,
         blank=True,
@@ -141,7 +141,7 @@ class Publisher(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex="^[a-zA-Z\s]*$",
+                regex=r"^[a-zA-Z\s]*$",
                 message="Name must be alphabetic",
                 code="invalid_publisher_name",
             )
@@ -152,7 +152,7 @@ class Publisher(models.Model):
         blank=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Description contains invalid characters",
                 code="invalid_publisher_description",
             )
@@ -176,7 +176,7 @@ class Author(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex="^[a-zA-Z\s]*$",
+                regex=r"^[a-zA-Z\s]*$",
                 message="Name must be alphabetic",
                 code="invalid_author_name",
             )
@@ -188,7 +188,7 @@ class Author(models.Model):
         blank=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Description contains invalid characters",
                 code="invalid_author_description",
             )
@@ -213,7 +213,7 @@ class Book(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex="^(978|979)?\d{9}(\d|X)$",
+                regex=r"^(978|979)?\d{9}(\d|X)$",
                 message="Invalid ISBN",
                 code="invalid_isbn",
             )
@@ -225,7 +225,7 @@ class Book(models.Model):
         max_length=60,
         validators=[
             RegexValidator(
-                regex="^[a-zA-Z0-9\s!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]+$",
+                regex=r"^[a-zA-Z0-9\s!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]+$",
                 message="Title contains invalid characters",
                 code="invalid_title",
             )
@@ -239,7 +239,7 @@ class Book(models.Model):
         null=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Small description contains invalid characters",
                 code="invalid_small_description",
             )
@@ -252,7 +252,7 @@ class Book(models.Model):
         blank=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-zA-Z0-9\s\-\_\.\,\;\:\'\"\(\)\[\]\{\}\@\#\$\%\&\*\+\=\?\/\!\^\|\~\`\\]+$",
+                regex=r"^[a-zA-Z0-9\s-]+$",
                 message="Description contains invalid characters",
                 code="invalid_description",
             )
@@ -321,7 +321,7 @@ class Book(models.Model):
         null=True,
         validators=[
             RegexValidator(
-                regex="^[a-zA-Z\s]+$",
+                regex=r"^[a-zA-Z\s]+$",
                 message="Language must be alphabetic",
                 code="invalid_language",
             )
