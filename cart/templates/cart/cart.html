@@ -89,7 +89,8 @@
                         </td>
                         <td class="py-3 edit-delete-btns">
                             <span class="update-link btn p-0"><small><i class="fas fa-sync"></i></small></span>
-                            <span class="remove-link btn p-0 float-right" id="remove_{{ item.item_id }}"><small><i class="fas fa-trash-alt"></i></small></span>
+                            <span class="remove-link btn p-0 float-right remove_{{ item.item_id }}"><small><i
+                                        class="fas fa-trash-alt"></i></small></span>
                         </td>
                     </tr>
                     {% endfor %}
@@ -142,17 +143,14 @@
     // Remove item and reload on click
     $('.remove-link').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
+        var itemId = $(this).attr('class').split('remove_')[1];
         var url = `/cart/remove/${itemId}/`;
         var data = {
             'csrfmiddlewaretoken': csrfToken
         };
 
-        console.log('Removing item:', itemId);  // Debugging statement
-
         $.post(url, data)
             .done(function () {
-                console.log('Item removed, reloading page');  // Debugging statement
                 location.reload();
             });
     });

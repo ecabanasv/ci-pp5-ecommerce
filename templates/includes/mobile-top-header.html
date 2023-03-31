@@ -1,60 +1,69 @@
-<li class="list-inline-item">
-    <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        <div class="text-center">
-            <div><i class="fas fa-search fa-lg"></i></div>
-            <p class="my-0"><small>Search</small></p>
-        </div>
-    </a>
-    <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
-        <form class="form" id="search-form" method="GET" action="{% url 'products:book_list' %}">
-            <div class="input-group w-100">
-                <input type="text" class="form-control border border-black rounded-0" name="search"
-                    placeholder="Search by title, author, or ISBN" value="{{ search }}" autocomplete="off" />
-                <div class="input-group-append">
-                    <button class="form-control btn btn-black border border-black rounded-0" id="search-button"
-                        type="submit">
-                        <span class="icon text-dark">
-                            <i class="fas fa-search"></i>
-                        </span>
-                    </button>
-                </div>
+<ul class="list-inline">
+    <li class="list-inline-item">
+        <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <div class="text-center">
+                <div><i class="fas fa-search fa-lg"></i></div>
+                <p class="my-0"><small>Search</small></p>
             </div>
-        </form>
-    </div>
-</li>
-<li class="list-inline-item dropdown">
-    <a class="text-black nav-link d-block d-lg-none" href="{% url 'profile' %}" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="text-center">
-            <div><i class="fas fa-user fa-lg"></i></div>
-            <p class="my-0"><small>My Account</small></p>
+        </a>
+        <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0" aria-labelledby="mobile-search">
+            <form class="form" method="GET" action="{% url 'products:book_list' %}">
+                <div class="input-group w-100">
+                    <input type="text" class="form-control border border-black rounded-0" name="search"
+                        placeholder="Search by title, author, or ISBN" value="{{ search }}" autocomplete="off">
+                    <div class="input-group-append">
+                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                            <span class="icon text-dark">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </a>
-    <div class="dropdown-menu border-0" aria-labelledby="user-options">
-        {% if request.user.is_authenticated %}
+    </li>
+    <li class="list-inline-item dropdown">
+        <a class="text-black nav-link d-block d-lg-none" href="{% url 'profile' %}" id="user-options"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="text-center">
+                <div><i class="fas fa-user fa-lg"></i></div>
+                <p class="my-0"><small>My Account</small></p>
+            </div>
+        </a>
+        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+            {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
-                <a href="/admin" target="_blank" class="dropdown-item"><i class="fas fa-user-shield"></i> <small>Admin panel</small></a>
+            <a href="/admin" target="_blank" class="dropdown-item"><i class="fas fa-user-shield"></i> <small>Admin
+                    panel</small></a>
             {% endif %}
-            <a href="{% url 'profile' %}" class="dropdown-item"><i class="fas fa-user"></i> <small>My Account</small></a>
-            <a href="{% url 'favourites' %}" class="dropdown-item"><i class="fas fa-heart"></i> <small>My Favorites</small></a>
-            <a href="{% url 'account_logout' %}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> <small>Logout</small></a>
-        {% else %}
-            <a href="{% url 'account_signup' %}" class="dropdown-item"><i class="fas fa-user-plus"></i> <small>Sign Up</small></a>
-            <a href="{% url 'account_login' %}" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> <small>Sign In</small></a>
-        {% endif %}
-    </div>
-</li>
-<li class="list-inline-item">
-    <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="{% url 'cart:view_cart' %}">
-        <div class="text-center">
-            <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-            <p class="my-0 text-primary">
-                {% if grand_total %}
-                <small>{{ grand_total|floatformat:2 }} EUR</small>
-                {% else %}
-                <small>0.00 EUR</small>
-                {% endif %}
-            </p>
+            <a href="{% url 'profile' %}" class="dropdown-item"><i class="fas fa-user"></i> <small>My
+                    Account</small></a>
+            <a href="{% url 'favourites' %}" class="dropdown-item"><i class="fas fa-heart"></i> <small>My
+                    Favorites</small></a>
+            <a href="{% url 'account_logout' %}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>
+                <small>Logout</small></a>
+            {% else %}
+            <a href="{% url 'account_signup' %}" class="dropdown-item"><i class="fas fa-user-plus"></i> <small>Sign
+                    Up</small></a>
+            <a href="{% url 'account_login' %}" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> <small>Sign
+                    In</small></a>
+            {% endif %}
         </div>
-    </a>
-</li>
+    </li>
+    <li class="list-inline-item">
+        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none"
+            href="{% url 'cart:view_cart' %}">
+            <div class="text-center">
+                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
+                <p class="my-0 text-primary">
+                    {% if grand_total %}
+                    <small>{{ grand_total|floatformat:2 }} EUR</small>
+                    {% else %}
+                    <small>0.00 EUR</small>
+                    {% endif %}
+                </p>
+            </div>
+        </a>
+    </li>
+</ul>
