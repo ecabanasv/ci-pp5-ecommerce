@@ -350,6 +350,7 @@ The current features of the website are:
 - The header is present on all pages of the website. It contains the following elements:
     - Text logo: redirects the user to the home page.
     - Search bar: allows the user to search for books by title, author or ISBN.
+    - Current amount of EUR: displays the current amount of EUR in the user's cart.
     - Cart icon: redirects the user to the cart page.
     - Username: redirects the user to the user account page.
     - User icon contains the following elements: 
@@ -361,6 +362,16 @@ The current features of the website are:
       + (If user logged in) Logout icon: logs the user out of the website.
 
 ![Header](docs/images/header.png)
+
+## Navbar
+
+- The navbar is present on all pages of the website. It contains the following elements:
+    - Books link: redirects the user to the books list page.
+    - About link: redirects the user to the about page.
+    - FAQs link: redirects the user to the FAQs page.
+    - Contact link: redirects the user to the contact page.
+
+![Navbar](docs/images/navbar.png)
 
 ## Footer
 
@@ -410,6 +421,20 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
 
 ![Books List](docs/images/books_list.png)
 
+## Pagination
+
+- The pagination feature allows the user to navigate through the books list. The pagination feature is present on the books list page and the search results page.
+
+Note: Check previous screenshots of book list.
+
+## Sort by
+
+- The sort by feature allows the user to sort the books by title, price or rating. The sort by feature is present on the books list page and the search results page.
+
+![Sort by](docs/images/sort_by.png)
+
+Note: Check previous screenshots of book list.
+
 ## Book detail
 
 - The book detail page contains the following elements:
@@ -431,18 +456,6 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
       + Delete book button: deletes the book from the database.
 
 ![Book Detail](docs/images/book_detail.png)
-
-## Pagination
-
-- The pagination feature allows the user to navigate through the books list. The pagination feature is present on the books list page and the search results page.
-
-![Pagination](docs/images/pagination.png)
-
-## Sort by
-
-- The sort by feature allows the user to sort the books by title, price or rating. The sort by feature is present on the books list page and the search results page.
-
-![Sort by](docs/images/sort_by.png)
 
 ## Ajax search
 
