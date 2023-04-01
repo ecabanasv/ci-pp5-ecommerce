@@ -397,6 +397,20 @@ The current features of the website are:
 
 ![Home Page](docs/images/home.png)
 
+## About Page
+
+- The about page contains the following elements:
+    - About text: short description of the website.
+    - Book image: fancy image of a book.
+
+![About Page](docs/images/about.png)
+
+## FAQs Page
+
+- The FAQs page contains the following elements:
+    - FAQs: displays the frequently asked questions.
+
+![FAQs Page](docs/images/faqs.png)
 
 ## User Account Pages
 
