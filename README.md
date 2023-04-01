@@ -126,7 +126,7 @@ EPIC: User interaction
 
 The palette was generated using [Coolors](https://coolors.co/). The colours white, black and seasalt were chosen to create a clean and simple design for the bookstore website. The colours were chosen to be easy on the eyes and to create a sense of calmness and relaxation.
 
-[![Colour Scheme](docs/images/palette.png)]
+![Colour Scheme](docs/images/palette.png)]
 
 Link to the colour palette: [https://coolors.co/f8f9fa-000000-ffffff](https://coolors.co/f8f9fa-000000-ffffff)
 
@@ -146,140 +146,140 @@ The wireframes for this project were created using [Balsamiq](https://balsamiq.c
 
  <summary>Home Page</summary>
 
-[![wireframe-homepage](docs/wireframes/Homepage.png)
+![wireframe-homepage](docs/wireframes/Homepage.png)
 </details>
 
 <details>
 
  <summary>Books - Guest</summary>
 
-[![wireframe-books-guest](docs/wireframes/Books%20-%20Guest.png)
+![wireframe-books-guest](docs/wireframes/Books%20-%20Guest.png)
 </details>
 
 <details>
 
  <summary>Books - User</summary>
 
-[![wireframe-books-user](docs/wireframes/Books%20-%20User.png)
+![wireframe-books-user](docs/wireframes/Books%20-%20User.png)
 </details>
 
 <details>
 
  <summary>Books - Admin</summary>
 
-[![wireframe-books-admin](docs/wireframes/Books%20-%20Admin.png)
+![wireframe-books-admin](docs/wireframes/Books%20-%20Admin.png)
 </details>
 
 <details>
 
  <summary>Books - Add Book</summary>
 
-[![wireframe-books-add-book](docs/wireframes/Books%20-%20Admin_%20Add%20book.png)
+![wireframe-books-add-book](docs/wireframes/Books%20-%20Admin_%20Add%20book.png)
 </details>
 
 <details>
 
  <summary>Books - Update Book</summary>
 
-[![wireframe-books-update-book](docs/wireframes/Books%20-%20Admin_%20Update%20book.png)
+![wireframe-books-update-book](docs/wireframes/Books%20-%20Admin_%20Update%20book.png)
 </details>
 
 <details>
 
  <summary>Books - Delete Book</summary>
 
-[![wireframe-books-delete-book](docs/wireframes/Books%20-%20Admin_%20Delete%20book.png)
+![wireframe-books-delete-book](docs/wireframes/Books%20-%20Admin_%20Delete%20book.png)
 </details>
 
 <details>
 
  <summary>Books - Details</summary>
 
-[![wireframe-books-details](docs/wireframes/Book%20-%20Details_%20User.png)
+![wireframe-books-details](docs/wireframes/Book%20-%20Details_%20User.png)
 </details>
 
 <details>
 
  <summary>Books - Favourites</summary>
 
-[![wireframe-books-favourites](docs/wireframes/Books%20-%20Favourites.png)
+![wireframe-books-favourites](docs/wireframes/Books%20-%20Favourites.png)
 </details>
 
 <details>
 
  <summary>Cart</summary>
 
-[![wireframe-cart](docs/wireframes/Cart%20-%20Guest_User.png)
+![wireframe-cart](docs/wireframes/Cart%20-%20Guest_User.png)
 </details>
 
 <details>
 
  <summary>Checkout</summary>
 
-[![wireframe-checkout](docs/wireframes/Checkout%20-%20Guest_User.png)
+![wireframe-checkout](docs/wireframes/Checkout%20-%20Guest_User.png)
 </details>
 
 <details>
 
  <summary>Checkout Success</summary>
 
-[![wireframe-checkout-success](docs/wireframes/Checkout%20success%20-%20User_Guest.png)
+![wireframe-checkout-success](docs/wireframes/Checkout%20success%20-%20User_Guest.png)
 </details>
 
 <details>
 
  <summary>Profile</summary>
 
-[![wireframe-profile](docs/wireframes/Profile.png)
+![wireframe-profile](docs/wireframes/Profile.png)
 </details>
 
 <details>
 
  <summary>About</summary>
 
-[![wireframe-about](docs/wireframes/About.png)
+![wireframe-about](docs/wireframes/About.png)
 </details>
 
 <details>
 
  <summary>FAQs</summary>
 
-[![wireframe-faqs](docs/wireframes/FAQs.png)
+![wireframe-faqs](docs/wireframes/FAQs.png)
 </details>
 
 <details>
 
  <summary>Contact</summary>
 
-[![wireframe-contact](docs/wireframes/Contact%20Us.png)
+![wireframe-contact](docs/wireframes/Contact%20Us.png)
 </details>
 
 <details>
 
  <summary>Login</summary>
 
-[![wireframe-login](docs/wireframes/Login.png)
+![wireframe-login](docs/wireframes/Login.png)
 </details>
 
 <details>
 
  <summary>Logout</summary>
 
-[![wireframe-logout](docs/wireframes/Logout.png)
+![wireframe-logout](docs/wireframes/Logout.png)
 </details>
 
 <details>
 
  <summary>Signup</summary>
 
-[![wireframe-signup](docs/wireframes/Signup.png)
+![wireframe-signup](docs/wireframes/Signup.png)
 </details>
 
 <details>
 
  <summary>Error</summary>
 
-[![wireframe-error](docs/wireframes/Error.png)
+![wireframe-error](docs/wireframes/Error.png)
 </details>
 
 # Agile Methodology
@@ -292,7 +292,7 @@ The link to the project's Github project board can be found [here](https://githu
 
 PostgreSQL was used to create the database for this project. The database schema can be found below:
 
-[![Database Schema](docs/images/model.png)]
+![Database Schema](docs/images/model.jpg)]
 
 # Security
 
