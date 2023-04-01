@@ -70,7 +70,6 @@ The type of user that I have in mind for this website is a book lover who enjoys
 EPIC: User Navigation   
 
 - As a user of the online bookstore website, I want to be able to easily navigate to different sections of the website, so that I can find what I am looking for quickly and efficiently.
-
 - As a user, I want to browse through the list of books available on the website to find books that interest me.
 - As a user, I want to be able to sort books based on different criteria, such as title, price, and rating, so that I can easily find the book I am looking for.
 - As a user, I want to be able to search for books based on their title, author name or ISBN so that I can quickly find the books I am interested in.
@@ -454,16 +453,21 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
 ## Add book
 
 - The add book page contains the following elements:
-    - Book image: allows the user to upload the book's image.
     - Book ISBN: allows the user to enter the book's ISBN.
     - Book title: allows the user to enter the book's title.
+    - Book small description: allows the user to enter the book's small description.
     - Book description: allows the user to enter the book's description.
     - Book category: allows the user to select the book's category.
     - Book subcategory: allows the user to select the book's subcategory.
     - Book publisher: allows the user to select the book's publisher.
     - Book author: allows the user to select the book's author.
+    - Book image: allows the user to upload the book's image.
+    - Book publication date: allows the user to enter the book's publication date.
     - Book price: allows the user to enter the book's price.
+    - Book stock: allows the user to enter the book's stock.
     - Book rating: allows the user to select the book's rating.
+    - Book language: allows the user to select the book's language.
+    - Book pages: allows the user to enter the book's pages.
     - Add book button: adds the book to the database.
 
 ![Add Book](docs/images/add_book.png)
@@ -471,16 +475,21 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
 ## Update book
 
 - The update book page contains the following elements:
-    - Book image: allows the user to upload the book's image.
     - Book ISBN: allows the user to enter the book's ISBN.
     - Book title: allows the user to enter the book's title.
+    - Book small description: allows the user to enter the book's small description.
     - Book description: allows the user to enter the book's description.
     - Book category: allows the user to select the book's category.
     - Book subcategory: allows the user to select the book's subcategory.
     - Book publisher: allows the user to select the book's publisher.
     - Book author: allows the user to select the book's author.
+    - Book image: allows the user to upload the book's image.
+    - Book published date: allows the user to enter the book's published date.
     - Book price: allows the user to enter the book's price.
+    - Book stock: allows the user to enter the book's stock.
     - Book rating: allows the user to select the book's rating.
+    - Book language: allows the user to select the book's language.
+    - Book pages: allows the user to enter the book's pages.
     - Update book button: updates the book in the database.
 
 ![Update Book](docs/images/update_book.png)
