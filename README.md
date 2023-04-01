@@ -445,8 +445,6 @@ Note: Check previous screenshots of book list.
 
 - The sort by feature allows the user to sort the books by title, price or rating. The sort by feature is present on the books list page and the search results page.
 
-![Sort by](docs/images/sort_by.png)
-
 Note: Check previous screenshots of book list.
 
 ## Book detail
