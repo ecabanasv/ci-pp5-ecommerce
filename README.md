@@ -126,7 +126,7 @@ EPIC: User interaction
 
 The palette was generated using [Coolors](https://coolors.co/). The colours white, black and seasalt were chosen to create a clean and simple design for the bookstore website. The colours were chosen to be easy on the eyes and to create a sense of calmness and relaxation.
 
-![Colour Scheme](docs/images/palette.png)]
+![Colour Scheme](docs/images/palette.png)
 
 Link to the colour palette: [https://coolors.co/f8f9fa-000000-ffffff](https://coolors.co/f8f9fa-000000-ffffff)
 
@@ -292,7 +292,7 @@ The link to the project's Github project board can be found [here](https://githu
 
 PostgreSQL was used to create the database for this project. The database schema can be found below:
 
-![Database Schema](docs/images/model.jpg)]
+![Database Schema](docs/images/model.jpg)
 
 # Security
 
@@ -325,6 +325,12 @@ Validators models were used to validate the data stored in the database. The val
 - MaxValueValidator: ensures that the value stored in the database is less than or equal to the value specified in the validator.
 - RegexValidator: ensures that the value stored in the database matches the regex specified in the validator.
 
+Stock control was implemented to ensure that the user cannot add more books to the cart than the number of books in stock. This was implemented in the following views:
+
+- webhook_success view: remove stock from the database when the user completes the checkout process.
+- add_to_cart: check if the user is trying to add more books to the cart than the number of books in stock. If the user is trying to add more books to the cart than the number of books in stock, the user is redirected to the cart page with a message that informs them that they cannot add more books to the cart than the number of books in stock.
+- quantity_input_script: if quantity is more than the number of books in stock, the quantity is set to the number of books in stock. This ensures that the user cannot add more books to the cart than the number of books in stock.
+
 ## Custom error pages:
 
 Custom error pages were created for the following errors:
@@ -355,6 +361,7 @@ The current features of the website are:
       + (If user logged in) Favourite menu: redirects the user to the favourites page.
       + (If user logged in) Logout icon: logs the user out of the website.
 
+![Header](docs/images/header.png)
 
 ## Footer
 
@@ -368,6 +375,8 @@ The current features of the website are:
     - Mailchimp subscription form: allows the user to subscribe to the website's newsletter.
     - Short description of the website.
 
+![Footer](docs/images/footer.png)
+
 ## Home Page
 
 - The home page contains the following elements:
@@ -376,12 +385,16 @@ The current features of the website are:
     - Button: redirects the user to the books list page.
 
 
+![Home Page](docs/images/home.png)
+
+
 ## User Account Pages
 
 - The user account pages contain the following elements:
     - User account orders: displays the user's orders (if they exist).
     - User account profile: displays the user's profile information.
 
+![User Account](docs/images/user_account.png)
 
 ## Books list
 
@@ -395,6 +408,8 @@ The current features of the website are:
     - Book rating: displays the book's rating.
 
 Note: All the content of Authors, Publishers and Books are dummy content. None of the authors, publishers or books are real. Covers were created with Canva. For more information, please visit the [Credits](#credits) section.
+
+![Books List](docs/images/books_list.png)
 
 ## Book detail
 
@@ -416,11 +431,75 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
       + Edit book button: redirects the user to the edit book page.
       + Delete book button: deletes the book from the database.
 
+![Book Detail](docs/images/book_detail.png)
+
+## Pagination
+
+- The pagination feature allows the user to navigate through the books list. The pagination feature is present on the books list page and the search results page.
+
+![Pagination](docs/images/pagination.png)
+
+## Sort by
+
+- The sort by feature allows the user to sort the books by title, price or rating. The sort by feature is present on the books list page and the search results page.
+
+![Sort by](docs/images/sort_by.png)
+
+## Ajax search
+
+- The ajax search feature allows the user to search for books by title, author or ISBN. The ajax search feature is present on the books list page and the search results page. When typing in the search bar, the user will see a list of books that match the search query. The user can click on the book to be redirected to the book detail page.
+
+![Ajax Search](docs/images/ajax_search.png)
+
+## Add book
+
+- The add book page contains the following elements:
+    - Book image: allows the user to upload the book's image.
+    - Book ISBN: allows the user to enter the book's ISBN.
+    - Book title: allows the user to enter the book's title.
+    - Book description: allows the user to enter the book's description.
+    - Book category: allows the user to select the book's category.
+    - Book subcategory: allows the user to select the book's subcategory.
+    - Book publisher: allows the user to select the book's publisher.
+    - Book author: allows the user to select the book's author.
+    - Book price: allows the user to enter the book's price.
+    - Book rating: allows the user to select the book's rating.
+    - Add book button: adds the book to the database.
+
+![Add Book](docs/images/add_book.png)
+
+## Update book
+
+- The update book page contains the following elements:
+    - Book image: allows the user to upload the book's image.
+    - Book ISBN: allows the user to enter the book's ISBN.
+    - Book title: allows the user to enter the book's title.
+    - Book description: allows the user to enter the book's description.
+    - Book category: allows the user to select the book's category.
+    - Book subcategory: allows the user to select the book's subcategory.
+    - Book publisher: allows the user to select the book's publisher.
+    - Book author: allows the user to select the book's author.
+    - Book price: allows the user to enter the book's price.
+    - Book rating: allows the user to select the book's rating.
+    - Update book button: updates the book in the database.
+
+![Update Book](docs/images/update_book.png)
+
+## Delete book
+
+- The delete book page contains the following elements:
+    - Cancel button: redirects the user to the book detail page.
+    - Delete book button: deletes the book from the database.
+
+![Delete Book](docs/images/delete_book.png)
+
 ## Favourites
 
 - The favourites page contains the following elements:
     - Favourites list: displays the user's favourites (if they exist).
     - Remove from favourites button: removes the book from the user's favourites.
+
+![Favourites](docs/images/favourites.png)
   
 ## Cart
 
@@ -430,6 +509,8 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
     - Update quantity button: updates the quantity of the book in the user's cart.
     - Checkout button: redirects the user to the checkout page.
     - Keep shopping button: redirects the user to the books list page.
+
+![Cart](docs/images/cart.png)
 
 ## Checkout
 
@@ -441,17 +522,33 @@ Note: All the content of Authors, Publishers and Books are dummy content. None o
     - Stripe payment form: allows the user to enter their payment information.
     - Submit order button: submits the order to the database.
 
+![Checkout](docs/images/checkout.png)
+
 ## Contact Form
 
 - The contact form contains the following elements:
     - Contact form: allows the user to enter their name, email, subject and message.
     - Send button: submits the message to the database.
 
+![Contact Form](docs/images/contact_form.png)
+
+## Toast messages
+
+- The toast messages are used to display messages to the user. The toast messages are present in all pages of the website. The toast messages are used to display the following messages:
+    - Success messages: the message is displayed when the user successfully completes an action (add to cart, add book, add to favourites...).
+    - Error messages: the message is displayed when the user fails to complete an action (error messages, ex. overpass the stock limit)
+    - Warning messages: the message is displayed when the user is about to perform an action that will delete data from the database (for example: remove favourites).
+    - Info messages: the message is displayed when the user is about to perform an action that will update data in the database (ex. Update a book)
+
+![Toast Messages](docs/images/toast_messages.png)
+
 ## Error Pages
 
 - The error pages contain the following elements:
     - Error message: displays the error message.
     - Home button: redirects the user to the home page.
+
+![Error](docs/images/error.png)
 
 # Business Model
 
@@ -490,7 +587,7 @@ The website will be promoted on social media. The social media accounts will be:
 
 An image preview of Facebook Page:
 
-![Facebook Page](docs/images/facebook.jpg)]
+![Facebook Page](docs/images/facebook.jpg)
 
 
 ## Email Marketing
