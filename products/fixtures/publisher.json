@@ -3,80 +3,80 @@
     "model": "products.publisher",
     "pk": 1,
     "fields": {
-      "name": "Penguin Random House",
-      "description": "One of the world's largest English-language trade book publishers."
+      "name": "Greenwood Press",
+      "description": "A publishing company that specializes in academic and reference works"
     }
   },
   {
     "model": "products.publisher",
     "pk": 2,
     "fields": {
-      "name": "Simon & Schuster",
-      "description": "A major American publisher best known for publishing popular books, magazines and digital content."
+      "name": "Tangerine Press",
+      "description": "A small, independent publisher that specializes in experimental and avant-garde literature"
     }
   },
   {
     "model": "products.publisher",
     "pk": 3,
     "fields": {
-      "name": "HarperCollins",
-      "description": "One of the world's largest publishing companies, with a diverse range of books, including fiction, non-fiction, and children's products."
+      "name": "Red Fox Publishing",
+      "description": "A children's book publisher that focuses on fun and interactive storytelling"
     }
   },
   {
     "model": "products.publisher",
     "pk": 4,
     "fields": {
-      "name": "Hachette Livre",
-      "description": "A French publisher that is one of the largest publishing groups in the world, with imprints in many countries."
+      "name": "Foggy Bottom Press",
+      "description": "A publisher that specializes in political non-fiction and investigative journalism"
     }
   },
   {
     "model": "products.publisher",
     "pk": 5,
     "fields": {
-      "name": "Macmillan Publishers",
-      "description": "A global trade publishing company that publishes books, magazines, textbooks, and more."
+      "name": "Hilltop Publishing",
+      "description": "A publisher that focuses on new and emerging voices in fiction"
     }
   },
   {
     "model": "products.publisher",
     "pk": 6,
     "fields": {
-      "name": "Bloomsbury Publishing",
-      "description": "A British independent publisher that has won multiple awards and publishes books in many genres."
+      "name": "Moonlight Books",
+      "description": "A publisher that specializes in romance and women's fiction"
     }
   },
   {
     "model": "products.publisher",
     "pk": 7,
     "fields": {
-      "name": "Scholastic Corporation",
-      "description": "An American multinational publishing, education and media company known for publishing educational materials for schools, teachers, and parents."
+      "name": "Big Sky Publishing",
+      "description": "A publisher that focuses on Australian literature and history"
     }
   },
   {
     "model": "products.publisher",
     "pk": 8,
     "fields": {
-      "name": "Houghton Mifflin Harcourt",
-      "description": "An American publishing company that publishes textbooks, instructional technology materials, assessments, reference works, and fiction and non-fiction for both adults and young readers."
+      "name": "Crescent Moon Press",
+      "description": "A publisher that specializes in science fiction and fantasy"
     }
   },
   {
     "model": "products.publisher",
     "pk": 9,
     "fields": {
-      "name": "Alfred A. Knopf",
-      "description": "An American publishing house that was founded in 1915 and is now part of the Knopf Doubleday Publishing Group, which is a division of Random House, itself a subsidiary of Penguin Random House."
+      "name": "Wildfire Books",
+      "description": "A publisher that focuses on thrillers and crime fiction"
     }
   },
   {
     "model": "products.publisher",
     "pk": 10,
     "fields": {
-      "name": "Farrar, Straus and Giroux",
-      "description": "An American publishing company that was founded in 1946 and is now a division of Macmillan Publishers, itself part of the Holtzbrinck Publishing Group."
+      "name": "Midnight Ink",
+      "description": "A publisher that specializes in mysteries and crime fiction"
     }
   }
 ]

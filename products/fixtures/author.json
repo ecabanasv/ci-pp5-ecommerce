@@ -3,144 +3,144 @@
     "model": "products.author",
     "pk": 1,
     "fields": {
-      "name": "Jane Austen",
-      "description": "A renowned British novelist who wrote several classic novels such as Pride and Prejudice and Sense and Sensibility"
+      "name": "Ella Nguyen",
+      "description": "A science fiction author who creates imaginative worlds and unique characters."
     }
   },
   {
     "model": "products.author",
     "pk": 2,
     "fields": {
-      "name": "Mark Twain",
-      "description": "An American writer who is best known for his works such as The Adventures of Tom Sawyer and The Adventures of Huckleberry Finn"
+      "name": "Isaac Liu",
+      "description": "A romance author who writes heartwarming stories about love and relationships."
     }
   },
   {
     "model": "products.author",
     "pk": 3,
     "fields": {
-      "name": "J.K. Rowling",
-      "description": "A British author who is best known for writing the Harry Potter series of seven fantasy novels"
+      "name": "Ethan Kim",
+      "description": "A mystery writer who crafts intricate plots and compelling characters."
     }
   },
   {
     "model": "products.author",
     "pk": 4,
     "fields": {
-      "name": "J.D. Salinger",
-      "description": "An American writer who is best known for his novel The Catcher in the Rye"
+      "name": "Victoria Patel",
+      "description": "A young adult author who tackles important issues facing today's teens."
     }
   },
   {
     "model": "products.author",
     "pk": 5,
     "fields": {
-      "name": "Gabriel García Márquez",
-      "description": "A Colombian author who was a pioneer of the magical realism literary genre and is best known for his novel One Hundred Years of Solitude"
+      "name": "Lucas Garcia",
+      "description": "A historical fiction author who brings different eras and places to life through meticulous research."
     }
   },
   {
     "model": "products.author",
     "pk": 6,
     "fields": {
-      "name": "J.R.R. Tolkien",
-      "description": "An English writer who is best known for his works such as The Hobbit and The Lord of the Rings trilogy"
+      "name": "Emily Park",
+      "description": "A literary author who explores themes of family, identity, and the human condition."
     }
   },
   {
     "model": "products.author",
     "pk": 7,
     "fields": {
-      "name": "Anne Frank",
-      "description": "A German-born Jewish girl who is best known for her diary, which documents her experiences hiding from the Nazis during the Holocaust"
+      "name": "Ava Singh",
+      "description": "A fantasy author who creates immersive worlds filled with magic and adventure."
     }
   },
   {
     "model": "products.author",
     "pk": 8,
     "fields": {
-      "name": "Herman Melville",
-      "description": "An American writer who is best known for his novel Moby-Dick"
+      "name": "Evelyn Lee",
+      "description": "A thriller author whose fast-paced stories keep readers on the edge of their seats."
     }
   },
   {
     "model": "products.author",
     "pk": 9,
     "fields": {
-      "name": "Leo Tolstoy",
-      "description": "A Russian writer who is best known for his novels War and Peace and Anna Karenina"
+      "name": "Sofia Rodriguez",
+      "description": "A self-help author who empowers readers to improve their lives and achieve their goals."
     }
   },
   {
     "model": "products.author",
     "pk": 10,
     "fields": {
-      "name": "Ken Follet",
-      "description": "A Welsh author best known for his historical fiction novels such as The Pillars of the Earth and World Without End."
+      "name": "Levi Hernandez",
+      "description": "A humorist and satirist whose books poke fun at modern society."
     }
   },
   {
     "model": "products.author",
     "pk": 11,
     "fields": {
-      "name": "Jean M. Auel",
-      "description": "An American author best known for her Earth's Children series, which includes the novels The Clan of the Cave Bear and The Shelters of Stone."
+      "name": "Lena Kim",
+      "description": "A science fiction author who pushes the boundaries of the genre with innovative ideas and concepts."
     }
   },
   {
     "model": "products.author",
     "pk": 12,
     "fields": {
-      "name": "Leila Meacham",
-      "description": "An American author best known for her historical fiction novels such as Roses and Tumbleweeds."
+      "name": "Milo Patel",
+      "description": "A mystery writer who creates complex and compelling characters that keep readers guessing until the very end."
     }
   },
   {
     "model": "products.author",
     "pk": 13,
     "fields": {
-      "name": "Maria Dueñas",
-      "description": "A Spanish author best known for her novel The Time in Between, which is set during the Spanish Civil War and the Second World War."
+      "name": "Ivy Chen",
+      "description": "A romance author who writes emotional and heartwarming stories about love and relationships."
     }
   },
   {
     "model": "products.author",
     "pk": 14,
     "fields": {
-      "name": "Victoria Holt",
-      "description": "A pseudonym used by the English author Eleanor Alice Burford Hibbert, who was best known for her gothic romance novels."
+      "name": "Samantha Nguyen",
+      "description": "A mystery writer who has won multiple awards for their compelling characters and intricate plots."
     }
   },
   {
     "model": "products.author",
     "pk": 15,
     "fields": {
-      "name": "Frederick Forsyth",
-      "description": "An English author and journalist best known for his thrillers, including The Day of the Jackal and The Odessa File."
+      "name": "Isabelle Chen",
+      "description": "A literary author whose debut novel has been praised for its originality and depth."
     }
   },
   {
     "model": "products.author",
     "pk": 16,
     "fields": {
-      "name": "Kenizé Mourad",
-      "description": "A French author best known for her historical fiction novels such as The Last portrait and L’Amant Persan."
+      "name": "David Kim",
+      "description": "A science fiction author who explores the intersection of technology and humanity in their stories."
     }
   },
   {
     "model": "products.author",
     "pk": 17,
     "fields": {
-      "name": "F. Scott Fitzgerald",
-      "description": "An American author best known for his novels and short stories, such as The Great Gatsby, Tender Is the Night, and This Side of Paradise. Fitzgerald was a prominent figure of the Jazz Age and is considered one of the greatest American writers of the 20th century."
+      "name": "Lucia Rodriguez",
+      "description": "A romance author who writes heartwarming stories about love and the power of connection."
     }
   },
   {
     "model": "products.author",
     "pk": 18,
     "fields": {
-      "name": "Harper Lee",
-      "description": "An American author best known for her Pulitzer Prize-winning novel To Kill a Mockingbird. Published in 1960, the novel is a classic of modern American literature, dealing with issues of racism and social inequality. Harper Lee's second novel, Go Set a Watchman, was published in 2015."
+      "name": "Harrison Lee",
+      "description": "A historical fiction author whose meticulously researched novels transport readers to different eras and places."
     }
   }
 ]
