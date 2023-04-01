@@ -35,13 +35,7 @@ class Category(models.Model):
     description = models.TextField(
         blank=True,
         null=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Description contains invalid characters",
-                code="invalid_category_description",
-            )
-        ],
+        max_length=500,
     )
 
     # A friendly name for the category
@@ -90,13 +84,7 @@ class SubCategory(models.Model):
     description = models.TextField(
         blank=True,
         null=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Description contains invalid characters",
-                code="invalid_subcategory_description",
-            )
-        ],
+        max_length=500,
     )
 
     # A foreign key to the Category model
@@ -139,24 +127,11 @@ class Publisher(models.Model):
     name = models.CharField(
         max_length=100,
         unique=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z\s]*$",
-                message="Name must be alphabetic",
-                code="invalid_publisher_name",
-            )
-        ],
     )
     # A brief description of the publisher
     description = models.TextField(
         blank=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Description contains invalid characters",
-                code="invalid_publisher_description",
-            )
-        ],
+        max_length=500,
     )
 
     def __str__(self):
@@ -186,13 +161,7 @@ class Author(models.Model):
     # A brief description of the author
     description = models.TextField(
         blank=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Description contains invalid characters",
-                code="invalid_author_description",
-            )
-        ],
+        max_length=500,
     )
 
     def __str__(self):
@@ -223,13 +192,6 @@ class Book(models.Model):
     # Title of the book
     title = models.CharField(
         max_length=60,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~]+$",
-                message="Title contains invalid characters",
-                code="invalid_title",
-            )
-        ],
     )
 
     # A short description of the book
@@ -237,26 +199,12 @@ class Book(models.Model):
         max_length=200,
         blank=True,
         null=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Small description contains invalid characters",
-                code="invalid_small_description",
-            )
-        ],
     )
 
     # A brief description of the book
     description = models.TextField(
         max_length=500,
         blank=True,
-        validators=[
-            RegexValidator(
-                regex=r"^[a-zA-Z0-9\s-]+$",
-                message="Description contains invalid characters",
-                code="invalid_description",
-            )
-        ],
     )
 
     # A foreign key to the Category model
