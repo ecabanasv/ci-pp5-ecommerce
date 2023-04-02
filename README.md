@@ -135,7 +135,7 @@ The book cover images used in this project were obtained from [Canva](https://ww
 
 ### Fonts
 
-The fonts used in this project are:
+The fonts used in this project is 'Roboto' from [Google Fonts](https://fonts.google.com/).
 
 ### Wireframes
 
