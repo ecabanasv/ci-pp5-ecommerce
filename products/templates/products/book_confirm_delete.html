@@ -12,20 +12,20 @@
             <hr class="my-4">
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-12">
-            <form method="post" class="form-horizontal">
-                {% csrf_token %}
-                <div class="form-group">
-                  <p>Are you sure you want to delete "{{ object.title }}"?</p>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    <a href="{% url 'products:book_detail' pk=object.pk %}" class="btn btn-secondary">Cancel</a>
-                  </div>
-                </div>
-            </form>
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <p class="text-center">Are you sure you want to delete "{{ object.title }}"?</p>
+            </div>
+            <div class="form-group row">
+              <div class="text-center">
+                <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                <a href="{% url 'products:book_detail' pk=object.pk %}" class="btn btn-secondary">Cancel</a>
+              </div>
+            </div>
+          </form>          
         </div>
     </div>
 </div>
