@@ -15,10 +15,10 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import dj_database_url
 
-from os import path
+# from os import path
 
-if path.exists("env.py"):
-    import env
+# if path.exists("env.py"):
+#    import env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -99,16 +99,16 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
-                "django.template.context_processors.request",  # required by allauth template tags
+                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "django.template.context_processors.media",  # required by media files
-                "products.context_processors.book_count_processor",  # required by products app
-                "cart.context_processors.cart_contents",  # required by cart appq
+                "django.template.context_processors.media",
+                "products.context_processors.book_count_processor",
+                "cart.context_processors.cart_contents",
             ],
             "builtins": [
-                "crispy_forms.templatetags.crispy_forms_tags",  # required by crispy_forms
-                "crispy_forms.templatetags.crispy_forms_field",  # required by crispy_forms
+                "crispy_forms.templatetags.crispy_forms_tags",
+                "crispy_forms.templatetags.crispy_forms_field",
             ],
         },
     },

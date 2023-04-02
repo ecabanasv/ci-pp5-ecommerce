@@ -326,20 +326,17 @@ a:visited {
 .btn-outline-secondary:hover {
     color: #fff;
     background-color: #6c757d;
-    border-color: #6c757d;
 }
 
 .btn-outline-secondary.active {
     color: #fff;
     background-color: #6c757d;
-    border-color: #6c757d;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
     color: #fff;
     background-color: #6c757d;
-    border-color: #6c757d;
 }
 
 /* Book cover image */
@@ -383,14 +380,11 @@ a:visited {
 
 .btn-secondary {
     background-color: #6c757d;
-    border-color: #6c757d;
 }
 
 .btn-secondary:hover {
     background-color: #5a6268;
-    border-color: #545b62;
 }
-
 
 
 /* Style for the pagination */
@@ -409,7 +403,6 @@ a:visited {
     z-index: 1;
     color: #fff;
     background-color: #6c757d;
-    border-color: #6c757d;
 }
 
 
@@ -486,7 +479,6 @@ input[name='q']::placeholder {
 .allauth-form-inner-content input[type='submit']:hover {
     color: #fff;
     background-color: #222;
-    border-color: #222;
 }
 
 .allauth-form-inner-content a {
