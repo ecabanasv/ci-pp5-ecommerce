@@ -9,6 +9,7 @@ from .models import Order, OrderLineItem
 
 import json
 import time
+import stripe
 
 
 class StripeWH_Handler:
@@ -18,6 +19,8 @@ class StripeWH_Handler:
         self.request = request
 
     def _send_confirmation_email(self, order):
+        """Send the user a confirmation email"""
+        print("Sending confirmation email")
         """Send the user a confirmation email"""
         cust_email = order.email
         subject = render_to_string(
@@ -43,12 +46,18 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        print("Payment intent succeeded")
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
 
-        billing_details = intent.charges.data[0].billing_details
+        # Get the Charge object
+        stripe_charge = stripe.Charge.retrieve(
+            intent.latest_charge
+        )
+
+        billing_details = stripe_charge.billing_details # updated
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)
 
@@ -97,6 +106,7 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             self._send_confirmation_email(order)
+            print("Email sent")
             return HttpResponse(
                 content=f'Webhook received: {event["type"]}\
                     | SUCCESS: Verified order already in database',
