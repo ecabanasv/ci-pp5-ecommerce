@@ -46,7 +46,7 @@ The user stories were used to guide the development of the website. The followin
 | As a user, I want to view the current content of the shopping cart page when adding/removing books | The user can view the current content of the shopping cart page when adding/removing books. | Pass |
 | As a user, I want to view my shopping cart with all the items I have added to it, along with their prices and quantities, so that I can review my purchases before checkout and make any necessary adjustments to my order | The user can view their shopping cart with all the items they have added to it, along with their prices and quantities. | Pass |
 | As a user, I want to view a summary of the items in my shopping cart so that I can review my order before proceeding to checkout.
-- As a user, I want to be able to adjust the quantity of books in my shopping cart. | The user can adjust the quantity of books in their shopping cart. | Pass |
+| As a user, I want to be able to adjust the quantity of books in my shopping cart. | The user can adjust the quantity of books in their shopping cart. | Pass |
 | As a guest user, I want to be able to checkout and purchase items without having to create an account. | The guest user can checkout and purchase items without having to create an account. | Pass |
 | As a user, I want to be able to enter my payment information so that I can complete my order | The user can enter their payment information so that they can complete their order. | Pass |
 | As a user, I want to view my order confirmation information after placing an order. | The user can view their order confirmation information after placing an order. | Pass |
