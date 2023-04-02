@@ -167,20 +167,20 @@
                   <div class="d-flex justify-content-between">
                     <p class="card-text mb-0">Rating: {{ book.rating }}</p>
                     <div class="d-grid gap-2 d-flex justify-content-center book-list-icons">
-                      <a class="text-info" href="{% url 'products:book_detail' book.id %}"><i class="fa-solid fa-circle-info fa-lg"></i></a>
+                      <a class="text-info" href="{% url 'products:book_detail' book.id %}" aria-label="Book details"><i class="fa-solid fa-circle-info fa-lg"></i></a>
                       {% if book.id in favorite_books %}
-                      <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}"><i class="fa-solid fa-heart fa-lg" aria-label="Remove from favorites"></i></a>
+                      <a class="text-danger" href="{% url 'products:remove_from_favorites' book.id %}" aria-label="Remove from favorites"><i class="fa-solid fa-heart fa-lg"></i></a>
                       {% else %}
-                      <a href="{% url 'products:add_to_favorites' book.id %}"><i class="fa-regular fa-heart fa-lg" aria-label="Add to favorites"></i></a>
+                      <a href="{% url 'products:add_to_favorites' book.id %}" aria-label="Add to favorites"><i class="fa-regular fa-heart fa-lg"></i></a>
                       {% endif %}
                       {% if book.stock > 0 %}
-                      <a class="text-success" href="{% url 'cart:cart_add' book.id %}"><i class="fa-solid fa-cart-shopping fa-lg" aria-label="Add to cart"></i></a>
+                      <a class="text-success" href="{% url 'cart:cart_add' book.id %}" aria-label="Add to cart"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                       {% endif %}
                       {% if user.is_authenticated and user.is_staff %}
-                      | <a class="text-warning" href="{% url 'products:book_update' book.id %}"><i class="fa-solid fa-edit fa-lg" aria-label="Edit book"></i></a>
-                      <a class="text-danger" href="{% url 'products:book_delete' book.id %}"><i class="fa-solid fa-trash-alt fa-lg" aria-label="Delete book"></i></a>
+                      | <a class="text-warning" href="{% url 'products:book_update' book.id %}" aria-label="Edit book"><i class="fa-solid fa-edit fa-lg"></i></a>
+                      <a class="text-danger" href="{% url 'products:book_delete' book.id %}" aria-label="Delete book"><i class="fa-solid fa-trash-alt fa-lg"></i></a>
                       {% endif %}
-                    </div>
+                  </div>                                
                   </div>
                 </div>
               </div>
