@@ -28,7 +28,7 @@ The user stories were used to guide the development of the website. The followin
 ### EPIC: User Navigation 
 
 | User Story | Testing | Result |
-
+| --- | --- | --- |
 | As a user of the online bookstore website, I want to be able to easily navigate to different sections of the website, so that I can find what I am looking for quickly and efficiently. | The navigation bar is present on all pages and is responsive. The navigation bar is always visible on the screen, so the user can easily navigate to different sections of the website. | Pass |
 | As a user, I want to browse through the list of books available on the website to find books that interest me. | The user can browse through the list of books available on the website. | Pass |
 | As a user, I want to be able to sort books based on different criteria, such as title, price, and rating, so that I can easily find the book I am looking for | The user can sort books based on different criteria, such as title, price, and rating. | Pass |
@@ -41,7 +41,7 @@ The user stories were used to guide the development of the website. The followin
 ### EPIC: Shopping
 
 | User Story | Testing | Result |
-
+| --- | --- | --- |
 | As a user, I want to be able to add books to my shopping cart, so that I can purchase them later | The user can add books to their shopping cart. | Pass |
 | As a user, I want to view the current content of the shopping cart page when adding/removing books | The user can view the current content of the shopping cart page when adding/removing books. | Pass |
 | As a user, I want to view my shopping cart with all the items I have added to it, along with their prices and quantities, so that I can review my purchases before checkout and make any necessary adjustments to my order | The user can view their shopping cart with all the items they have added to it, along with their prices and quantities. | Pass |
@@ -54,7 +54,7 @@ The user stories were used to guide the development of the website. The followin
 ### EPIC: Bookstore Management
 
 | User Story | Testing | Result |
-
+| --- | --- | --- |
 | As an admin user, I want to be able to view and manage the categories in the system in the admin interface, so that I can keep the category information up to date. | The admin user can view and manage the categories in the system in the admin interface. | Pass |
 | As an admin user, I want to be able to view and manage the subcategories in the system in the admin interface, so that I can keep the subcategory information up to date. | The admin user can view and manage the subcategories in the system in the admin interface. | Pass |
 | As an admin user, I want to be able to view and manage the authors in the system in the admin interface, so that I can keep the author information up to date | The admin user can view and manage the authors in the system in the admin interface. | Pass |
@@ -69,7 +69,7 @@ The user stories were used to guide the development of the website. The followin
 ### EPIC: User account and profile
 
 | User Story | Testing | Result |
-
+| --- | --- | --- |
 | As a user who does not have an account, I want to be able to fill out a form to sign up for a new account. | The user who does not have an account can fill out a form to sign up for a new account. | Pass |
 | As a user, I want to be able to log in and log out of my account so that I can access my account information and ensure the security of my account. | The user can log in and log out of their account. | Pass |
 | As a user who has forgotten their password, I want to be able to reset it so that I can regain access to my account | The user who has forgotten their password can reset it. | Pass |
@@ -79,7 +79,7 @@ The user stories were used to guide the development of the website. The followin
 ### EPIC: User interaction
 
 | User Story | Testing | Result |
-
+| --- | --- | --- |
 | As a user, I want to receive toast messages for certain events, such as adding or removing items from my favourites, creating or updating a book, or adding an item to my cart. | The user receives toast messages for certain events, such as adding or removing items from their favourites, creating or updating a book, or adding an item to their cart. | Pass |
 | As a user, I want to see a responsive book list layout that adjusts based on the number of books displayed, so that I can easily view and navigate the book list on different devices and screen sizes. | The user can see a responsive book list layout that adjusts based on the number of books displayed. | Pass |
 | As a user, I want to be able to search for books on the website using AJAX so that I can quickly find the book I am looking for without having to reload the page. | The user can search for books on the website using AJAX. | Pass |
@@ -94,7 +94,7 @@ The user stories were used to guide the development of the website. The followin
 The HTML code was validated using the [W3C Markup Validation Service](https://validator.w3.org/).
 
 | Page | Result | 
-
+| --- | --- |
 | base.html | Pass |
 | index.html | Pass |
 | book_list.html | Pass |
@@ -119,6 +119,7 @@ The HTML code was validated using the [W3C Markup Validation Service](https://va
 The CSS code was validated using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/).
 
 | File | Result | 
+| --- | --- |
 | static/css/style.css | Pass |
 | checkout/static/css/checkout.css | Pass |
 
@@ -127,6 +128,7 @@ The CSS code was validated using the [W3C CSS Validation Service](https://jigsaw
 The JavaScript code was validated using the [JSHint](https://jshint.com/) validator. The following files were included in the validation as they contain JavaScript code:
 
 | File | Result |
+| --- | --- |
 | templates/base.html | Pass |
 | templates/includes/footer.html | Pass |
 | static/js/dropdown.js | Pass |
