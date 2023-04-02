@@ -73,12 +73,12 @@
         {% csrf_token %}
         {% if book.stock > 0 %}
         <div class="form-group mb-2 text-left">
-          <label>Quantity:</label>
-          <input class="qty_input" type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
+          <label for="qty_input">Quantity:</label>
+          <input id="qty_input" class="qty_input" type="number" name="quantity" value="1" min="1" max="{{ book.stock }}" required>
           <button type="submit" class="btn btn-secondary">Add to Cart</button>
         </div>
         {% endif %}
-      </form>
+      </form>      
     </div>
   </div>
 </div>
